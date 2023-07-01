@@ -1,5 +1,5 @@
 import getStyle from "../../Styles";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 
 interface Props {
   table: string[][];
@@ -25,23 +25,24 @@ function DesktopTable({ table, groupDesktop }: Props) {
 
         for (let j = 0; j < cols.length - 2; j++) {
           let content = cols[j].trim();
+          let key = j + Math.random();
           if (j >= 1 && j <= 4) {
             content = parseFloat(content).toFixed(3);
             row.push(
-              <td id={`${i}-${j}`} contentEditable className="rows">
+              <td key={key} id={`${i}-${j}`} contentEditable className="rows">
                 {content}
               </td>
             );
           } else if (j === 5) {
             content = parseFloat(content).toFixed(3);
             row.push(
-              <td id={`${i}-${j}`} className="rows">
+              <td key={key} id={`${i}-${j}`} className="rows">
                 {content}
               </td>
             );
           } else {
             row.push(
-              <td id={`${i}-${j}`} className="rows">
+              <td key={key} id={`${i}-${j}`} className="rows">
                 {content}
               </td>
             );
@@ -50,7 +51,11 @@ function DesktopTable({ table, groupDesktop }: Props) {
 
         rank += 1;
         rows.push(
-          <tr key={i} id={`${i}-6`} className="rows text-center">
+          <tr
+            key={i + Math.random()}
+            id={`${i}-6`}
+            className="rows text-center"
+          >
             {row}
           </tr>
         );
