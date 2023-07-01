@@ -7,59 +7,59 @@ interface Props {
 }
 
 function DesktopTable({ table, groupDesktop }: Props) {
-  // const tbody = useRef<HTMLTableSectionElement>(null);
-  // const [tableData, setTableData] = useState<string[][]>(props.table);
-
   let rank = groupDesktop;
-  const dataArray = table;
 
   const renderRows = () => {
     const rows = [];
 
-    for (let i = rank; i < groupDesktop + 10; i++) {
-      const row = [];
-      const cols = dataArray[i];
+    if (table && table.length > 0) {
+      for (let i = rank; i < groupDesktop + 10; i++) {
+        const row = [];
+        const cols: string[] = table[i];
 
-      row.push(
-        <td id={`${i}-0`} className="row-header">
-          {rank}
-        </td>
-      );
+        row.push(
+          <td id={`${i}-0`} className="row-header">
+            {rank}
+          </td>
+        );
 
-      for (let j = 0; j < cols.length - 2; j++) {
-        let content = cols[j].trim();
-        if (j >= 1 && j <= 4) {
-          content = parseFloat(content).toFixed(3);
-          row.push(
-            <td id={`${i}-${j}`} contentEditable className="rows">
-              {content}
-            </td>
-          );
-        } else if (j === 5) {
-          content = parseFloat(content).toFixed(3);
-          row.push(
-            <td id={`${i}-${j}`} className="rows">
-              {content}
-            </td>
-          );
-        } else {
-          row.push(
-            <td id={`${i}-${j}`} className="rows">
-              {content}
-            </td>
-          );
+        for (let j = 0; j < cols.length - 2; j++) {
+          let content = cols[j].trim();
+          if (j >= 1 && j <= 4) {
+            content = parseFloat(content).toFixed(3);
+            row.push(
+              <td id={`${i}-${j}`} contentEditable className="rows">
+                {content}
+              </td>
+            );
+          } else if (j === 5) {
+            content = parseFloat(content).toFixed(3);
+            row.push(
+              <td id={`${i}-${j}`} className="rows">
+                {content}
+              </td>
+            );
+          } else {
+            row.push(
+              <td id={`${i}-${j}`} className="rows">
+                {content}
+              </td>
+            );
+          }
         }
+
+        rank += 1;
+        rows.push(
+          <tr key={i} id={`${i}-6`} className="rows text-center">
+            {row}
+          </tr>
+        );
       }
 
-      rank += 1;
-      rows.push(
-        <tr id={`${i}-6`} className="rows text-center">
-          {cols[6]}
-        </tr>
-      );
+      return rows;
     }
 
-    return rows;
+    return <tr></tr>;
   };
 
   return (
