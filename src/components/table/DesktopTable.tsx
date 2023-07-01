@@ -1,5 +1,5 @@
 import getStyle from "../../Styles";
-// import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   table: string[][];
@@ -8,6 +8,11 @@ interface Props {
 
 function DesktopTable({ table, groupDesktop }: Props) {
   let rank = groupDesktop;
+
+  const [tableValue, setTableValue] = useState<string>("");
+
+  /* Defines an onchange function property */
+  const handleChange = (event: React.ChangeEvent<HTMLTableElement>) => {};
 
   const renderRows = () => {
     const rows = [];
