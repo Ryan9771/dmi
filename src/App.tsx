@@ -5,6 +5,7 @@ import { csvToArray } from "./util/csv_conversion";
 
 export default function App() {
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
+  const [groupDesktop, setGroupDesktop] = useState<number>(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +22,11 @@ export default function App() {
     fetchData();
   }, []);
 
-  console.log(dmiCsv);
 
   return (
     <div className="w-full flex flex-col items-center">
       <FilterButtons />
-      <DesktopTable table={dmiCsv}/>
+      <DesktopTable table={dmiCsv} groupDesktop={groupDesktop} />
     </div>
   );
 }
