@@ -6,7 +6,5 @@ export function csvToArray(csv: string): string[][] {
         let row = rows[i].split(',');
         dataArray.push(row);
     }
-    console.log("The csv file to an array:");
-    console.log(dataArray);
     return dataArray;
 }

@@ -1,6 +1,10 @@
 import getStyle from "../../Styles";
 
-function DesktopTable() {
+interface Props {
+  table: string[][];
+}
+
+function DesktopTable({ table }: Props) {
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>
       <table id="csv-table" className={getStyle(styles, "table")}>
