@@ -67,11 +67,7 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
 
         rank += 1;
         rows.push(
-          <tr
-            key={i + Math.random()}
-            id={`${i}-6`}
-            className="rows text-center"
-          >
+          <tr key={i + Math.random()} id={`${i}-6`} className="row-line">
             {row}
           </tr>
         );
@@ -80,6 +76,7 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
     setRenderedRows(rows);
   };
 
+  /* Reloads the table when the csv dependency is changed */
   useEffect(() => {
     renderRows();
   }, [table]);

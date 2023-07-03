@@ -28,7 +28,7 @@
     }
 
     .rows {
-        @apply text-gray-700 px-6 py-4 text-sm whitespace-nowrap;
+        @apply text-gray-700 px-6 py-4 text-sm whitespace-nowrap ;
     }
 
     .rows-mobile {
@@ -36,7 +36,7 @@
     }
 
     .row-line {
-        @apply bg-white border-b even:bg-gray-50 hover:bg-gray-100;
+        @apply bg-white border-b even:bg-gray-100 hover:bg-gray-200;
     }
 
     .maps {
