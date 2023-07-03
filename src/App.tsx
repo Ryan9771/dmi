@@ -1,6 +1,8 @@
 import FilterButtons from "./components/buttons/FilterButtons";
 import DesktopTable from "./components/table/DesktopTable";
-import { useEffect, useState } from "react";
+import GroupButtons from "./components/buttons/GroupButtons";
+
+import { useEffect, useState, useMemo } from "react";
 import { csvToArray } from "./util/csv_conversion";
 import { formatNumber } from "./util/utils";
 
@@ -62,6 +64,7 @@ export default function App() {
         groupDesktop={groupDesktop}
         tableEditor={editTable}
       />
+      <GroupButtons groupDesktop={groupDesktop} />
     </div>
   );
 }
