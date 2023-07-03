@@ -1,3 +1,4 @@
+/* Converts the csv to a 2D array for table use */
 export function csvToArray(csv: string): string[][] {
     const rows: string[] = csv.split('\n');
     const dataArray: string[][] = [];

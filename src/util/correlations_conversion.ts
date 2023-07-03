@@ -6,6 +6,7 @@ interface NestedDict {
     [key: string]: InnerDict;
 }
 
+/* Converts the correlation map into a nested dictionary */
 export function correlationsToArray(csvData: string): NestedDict {
    /* Gets the rows and headers of the csv file */
    let rows = csvData.split('\n');
@@ -37,9 +38,6 @@ export function correlationsToArray(csvData: string): NestedDict {
 
        dict[country] = innerDict;
    }
-
-    console.log("The csv file to a nested dictionary:");
-    console.log(dict);
 
    return dict 
 }
