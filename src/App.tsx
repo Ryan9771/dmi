@@ -30,9 +30,9 @@ export default function App() {
 
   /* Changes the csv array value */
   const editTable = (i: string, j: string, val: string) => {
-    let row = parseInt(i);
-    let col = parseInt(j);
-    let newDmi = dmiCsv;
+    const row = parseInt(i);
+    const col = parseInt(j);
+    const newDmi = dmiCsv;
     newDmi[row][col] = val;
 
     /* Recalculates the Index value */
@@ -51,10 +51,6 @@ export default function App() {
 
     setDmiCsv(newDmi); // TODO: Figure out how to force reload component upon dmiCsv change
   };
-
-  useEffect(() => {
-    console.log(dmiCsv);
-  }, [dmiCsv]);
 
   return (
     <div className="w-full flex flex-col items-center">

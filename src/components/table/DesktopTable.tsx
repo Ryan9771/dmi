@@ -1,5 +1,5 @@
 import getStyle from "../../Styles";
-import { useMemo, useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import DesktopCell from "./DesktopCell";
 
 interface Props {
@@ -24,7 +24,6 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
   };
 
   const renderRows = () => {
-    setRenderedRows([]);
     const rows: JSX.Element[] = [];
 
     if (table && table.length > 0) {
@@ -72,8 +71,8 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
           </tr>
         );
       }
+      setRenderedRows(rows);
     }
-    setRenderedRows(rows);
   };
 
   /* Reloads the table when the csv dependency is changed */
