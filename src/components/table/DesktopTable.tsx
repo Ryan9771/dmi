@@ -1,21 +1,31 @@
 import getStyle from "../../Styles";
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
+import DesktopCell from "./DesktopCell";
 
 interface Props {
   table: string[][];
   groupDesktop: number;
+  tableEditor: (i: string, j: string, val: string) => void;
 }
 
-function DesktopTable({ table, groupDesktop }: Props) {
+function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
   let rank = groupDesktop;
-
-  const [tableValue, setTableValue] = useState<string>("");
+  const [renderedRows, setRenderedRows] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
-  const handleChange = (event: React.ChangeEvent<HTMLTableElement>) => {};
+  const handleBlur = (event: React.FocusEvent<HTMLTableCellElement>) => {
+    const text = event.target.innerText.trim();
+    const id: string | undefined =
+      event.target.attributes.getNamedItem("id")?.value;
+    if (id) {
+      const [row, col] = id.split("-");
+      tableEditor(row, col, text);
+    }
+  };
 
   const renderRows = () => {
-    const rows = [];
+    setRenderedRows([]);
+    const rows: JSX.Element[] = [];
 
     if (table && table.length > 0) {
       for (let i = rank; i < groupDesktop + 10; i++) {
@@ -32,11 +42,12 @@ function DesktopTable({ table, groupDesktop }: Props) {
           let content = cols[j].trim();
           let key = j + Math.random();
           if (j >= 1 && j <= 4) {
-            content = parseFloat(content).toFixed(3);
             row.push(
-              <td key={key} id={`${i}-${j}`} contentEditable className="rows">
-                {content}
-              </td>
+              <DesktopCell
+                content={parseFloat(content).toFixed(3)}
+                id={`${i}-${j}`}
+                handleBlur={handleBlur}
+              />
             );
           } else if (j === 5) {
             content = parseFloat(content).toFixed(3);
@@ -65,12 +76,13 @@ function DesktopTable({ table, groupDesktop }: Props) {
           </tr>
         );
       }
-
-      return rows;
     }
-
-    return <tr></tr>;
+    setRenderedRows(rows);
   };
+
+  useEffect(() => {
+    renderRows();
+  }, [table]);
 
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>
@@ -87,7 +99,7 @@ function DesktopTable({ table, groupDesktop }: Props) {
           </tr>
         </thead>
 
-        <tbody>{renderRows()}</tbody>
+        <tbody>{renderedRows}</tbody>
       </table>
     </div>
   );

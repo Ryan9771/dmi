@@ -22,11 +22,20 @@ export default function App() {
     fetchData();
   }, []);
 
+  const editTable = (i: string, j: string, val: string) => {
+    let newDmi = dmiCsv;
+    newDmi[parseInt(i)][parseInt(j)] = val;
+    setDmiCsv(newDmi);
+  };
 
   return (
     <div className="w-full flex flex-col items-center">
       <FilterButtons />
-      <DesktopTable table={dmiCsv} groupDesktop={groupDesktop} />
+      <DesktopTable
+        table={dmiCsv}
+        groupDesktop={groupDesktop}
+        tableEditor={editTable}
+      />
     </div>
   );
 }
