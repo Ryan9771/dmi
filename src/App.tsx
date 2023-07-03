@@ -32,7 +32,7 @@ export default function App() {
   const editTable = (i: string, j: string, val: string) => {
     const row = parseInt(i);
     const col = parseInt(j);
-    const newDmi = dmiCsv;
+    const newDmi = [...dmiCsv];
     newDmi[row][col] = val;
 
     /* Recalculates the Index value */
