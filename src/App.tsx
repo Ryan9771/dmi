@@ -2,6 +2,7 @@ import FilterButtons from "./components/buttons/FilterButtons";
 import DesktopTable from "./components/table/DesktopTable";
 import { useEffect, useState } from "react";
 import { csvToArray } from "./util/csv_conversion";
+import { formatNumber } from "./util/utils";
 
 export default function App() {
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
@@ -33,7 +34,8 @@ export default function App() {
     const row = parseInt(i);
     const col = parseInt(j);
     const newDmi = [...dmiCsv];
-    newDmi[row][col] = val;
+
+    newDmi[row][col] = formatNumber(val);
 
     /* Recalculates the Index value */
     let sum =
@@ -43,13 +45,13 @@ export default function App() {
       parseFloat(newDmi[row][4]);
 
     let average = sum / 4;
-    newDmi[row][5] = average.toFixed(3);
+    newDmi[row][5] = formatNumber(average.toString());
 
     newDmi.sort(function (a, b) {
       return parseFloat(b[5]) - parseFloat(a[5]);
     });
 
-    setDmiCsv(newDmi); // TODO: Figure out how to force reload component upon dmiCsv change
+    setDmiCsv(newDmi);
   };
 
   return (

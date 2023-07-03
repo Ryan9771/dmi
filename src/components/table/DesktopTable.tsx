@@ -1,6 +1,7 @@
 import getStyle from "../../Styles";
 import { useState, useEffect } from "react";
 import DesktopCell from "./DesktopCell";
+import { formatNumber } from "../../util/utils";
 
 interface Props {
   table: string[][];
@@ -43,13 +44,13 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
           if (j >= 1 && j <= 4) {
             row.push(
               <DesktopCell
-                content={parseFloat(content).toFixed(3)}
+                content={formatNumber(content)}
                 id={`${i}-${j}`}
                 handleBlur={handleBlur}
               />
             );
           } else if (j === 5) {
-            content = parseFloat(content).toFixed(3);
+            content = formatNumber(content);
             row.push(
               <td key={key} id={`${i}-${j}`} className="rows">
                 {content}
