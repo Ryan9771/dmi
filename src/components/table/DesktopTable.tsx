@@ -7,9 +7,15 @@ interface Props {
   table: string[][];
   groupDesktop: number;
   tableEditor: (i: string, j: string, val: string) => void;
+  clusterMode: boolean;
 }
 
-function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
+function DesktopTable({
+  table,
+  groupDesktop,
+  tableEditor,
+  clusterMode,
+}: Props) {
   const [renderedRows, setRenderedRows] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
@@ -67,6 +73,16 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
           }
         }
 
+        /* Handles Cluster mode column */
+        if (clusterMode) {
+          console.log(cols[6]);
+          row.push(
+            <td key={Math.random()} id={`${i}-6`} className="rows text-center">
+              {cols[6]}
+            </td>
+          );
+        }
+
         rank += 1;
         rows.push(
           <tr key={i + Math.random()} id={`${i}-6`} className="row-line">
@@ -81,7 +97,7 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
   /* Reloads the table when the dependencies are changed */
   useEffect(() => {
     renderRows();
-  }, [table, groupDesktop]);
+  }, [table, groupDesktop, clusterMode]);
 
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>
@@ -95,6 +111,7 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
             <th className={getStyle(styles, "th")}>P3</th>
             <th className={getStyle(styles, "th")}>P4</th>
             <th className={getStyle(styles, "th")}>Index</th>
+            {clusterMode && <th className="headers text-center">Clusters</th>}
           </tr>
         </thead>
 

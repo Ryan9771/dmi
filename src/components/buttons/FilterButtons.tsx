@@ -1,6 +1,10 @@
 import getStyle from "../../Styles";
 
-function FilterButtons() {
+interface Props {
+  toggleClusterMode: () => void;
+}
+
+function FilterButtons({ toggleClusterMode }: Props) {
   return (
     <div className={getStyle(styles, "ctn")}>
       <p className={getStyle(styles, "txt")}>DMI Table</p>
@@ -8,7 +12,12 @@ function FilterButtons() {
       {/* TODO: Configure buttons through id or handler to handle button clicks */}
 
       <div className={getStyle(styles, "btnGroup")}>
-        <div className={getStyle(styles, "btnClusters")}>Clusters</div>
+        <div
+          onClick={toggleClusterMode}
+          className={getStyle(styles, "btnClusters")}
+        >
+          Clusters
+        </div>
         <div className={getStyle(styles, "btnCorrelations")}>Correlations</div>
       </div>
     </div>

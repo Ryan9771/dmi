@@ -9,6 +9,7 @@ import { formatNumber } from "./util/utils";
 export default function App() {
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
   const [groupDesktop, setGroupDesktop] = useState<number>(1);
+  const [clusterMode, setClusterMode] = useState<boolean>(false);
 
   /* Parses the data files on load */
   useEffect(() => {
@@ -70,12 +71,21 @@ export default function App() {
     }
   };
 
+  const toggleClusterMode = () => {
+    if (clusterMode) {
+      setClusterMode(false);
+    } else {
+      setClusterMode(true);
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center">
-      <FilterButtons />
+      <FilterButtons toggleClusterMode={toggleClusterMode} />
       <DesktopTable
         table={dmiCsv}
         groupDesktop={groupDesktop}
+        clusterMode={clusterMode}
         tableEditor={editTable}
       />
       <GroupButtons
