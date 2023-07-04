@@ -2,7 +2,7 @@ import FilterButtons from "./components/buttons/FilterButtons";
 import DesktopTable from "./components/table/DesktopTable";
 import GroupButtons from "./components/buttons/GroupButtons";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { csvToArray } from "./util/csv_conversion";
 import { formatNumber } from "./util/utils";
 
