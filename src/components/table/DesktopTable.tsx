@@ -8,6 +8,7 @@ interface Props {
   groupDesktop: number;
   tableEditor: (i: string, j: string, val: string) => void;
   clusterMode: boolean;
+  correlationMode: boolean;
 }
 
 function DesktopTable({
@@ -15,6 +16,7 @@ function DesktopTable({
   groupDesktop,
   tableEditor,
   clusterMode,
+  correlationMode,
 }: Props) {
   const [renderedRows, setRenderedRows] = useState<JSX.Element[]>([]);
 
@@ -97,7 +99,7 @@ function DesktopTable({
   /* Reloads the table when the dependencies are changed */
   useEffect(() => {
     renderRows();
-  }, [table, groupDesktop, clusterMode]);
+  }, [table, groupDesktop, clusterMode, correlationMode]);
 
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>

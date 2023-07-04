@@ -2,9 +2,10 @@ import getStyle from "../../Styles";
 
 interface Props {
   toggleClusterMode: () => void;
+  toggleCorrelationMode: () => void;
 }
 
-function FilterButtons({ toggleClusterMode }: Props) {
+function FilterButtons({ toggleClusterMode, toggleCorrelationMode }: Props) {
   return (
     <div className={getStyle(styles, "ctn")}>
       <p className={getStyle(styles, "txt")}>DMI Table</p>
@@ -18,7 +19,12 @@ function FilterButtons({ toggleClusterMode }: Props) {
         >
           Clusters
         </div>
-        <div className={getStyle(styles, "btnCorrelations")}>Correlations</div>
+        <div
+          onClick={toggleCorrelationMode}
+          className={getStyle(styles, "btnCorrelations")}
+        >
+          Correlations
+        </div>
       </div>
     </div>
   );

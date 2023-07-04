@@ -4,12 +4,16 @@ import GroupButtons from "./components/buttons/GroupButtons";
 
 import { useEffect, useState } from "react";
 import { csvToArray } from "./util/csv_conversion";
+import { correlationsToArray } from "./util/correlations_conversion";
+import { NestedDict } from "./util/correlations_conversion";
 import { formatNumber } from "./util/utils";
 
 export default function App() {
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
+  const [correlationCsv, setCorrelationCsv] = useState<NestedDict>({});
   const [groupDesktop, setGroupDesktop] = useState<number>(1);
   const [clusterMode, setClusterMode] = useState<boolean>(false);
+  const [correlationMode, setCorrelationMode] = useState<boolean>(false);
 
   /* Parses the data files on load */
   useEffect(() => {
@@ -18,12 +22,15 @@ export default function App() {
         const response = await fetch("/src/assets/data/dmi_2023_clusters.csv");
         const csvString = await response.text();
         const newDataArray = csvToArray(csvString);
-
         newDataArray.sort(function (a, b) {
           return parseFloat(b[5]) - parseFloat(a[5]);
         });
-
         setDmiCsv(newDataArray);
+        
+        const response2 = await fetch("/src/assets/data/correlations.csv")
+        const data = await response2.text();
+        setCorrelationCsv(correlationsToArray(data));
+        
       } catch (error) {
         console.log(error);
       }
@@ -37,6 +44,10 @@ export default function App() {
     const row = parseInt(i);
     const col = parseInt(j);
     const newDmi = [...dmiCsv];
+
+    if (correlationMode) {
+
+    }
 
     newDmi[row][col] = formatNumber(val);
 
@@ -72,20 +83,24 @@ export default function App() {
   };
 
   const toggleClusterMode = () => {
-    if (clusterMode) {
-      setClusterMode(false);
-    } else {
-      setClusterMode(true);
-    }
+    setClusterMode(!clusterMode);
+  };
+
+  const toggleCorrelationMode = () => {
+    setCorrelationMode(!correlationMode);
   };
 
   return (
     <div className="w-full flex flex-col items-center">
-      <FilterButtons toggleClusterMode={toggleClusterMode} />
+      <FilterButtons
+        toggleClusterMode={toggleClusterMode}
+        toggleCorrelationMode={toggleCorrelationMode}
+      />
       <DesktopTable
         table={dmiCsv}
         groupDesktop={groupDesktop}
         clusterMode={clusterMode}
+        correlationMode={correlationMode}
         tableEditor={editTable}
       />
       <GroupButtons

@@ -2,7 +2,7 @@ interface InnerDict {
     [key: string]: number;
 }
 
-interface NestedDict {
+export interface NestedDict {
     [key: string]: InnerDict;
 }
 
