@@ -56,6 +56,20 @@ export default function App() {
     setDmiCsv(newDmi);
   };
 
+  /* Increments the group index for desktop */
+  const incrementGroupDesktop = () => {
+    if (groupDesktop < 10) {
+      setGroupDesktop(groupDesktop + 1);
+    }
+  };
+
+  /* Decrements the group index for desktop */
+  const decrementGroupDesktop = () => {
+    if (groupDesktop > 1) {
+      setGroupDesktop(groupDesktop - 1);
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center">
       <FilterButtons />
@@ -64,7 +78,10 @@ export default function App() {
         groupDesktop={groupDesktop}
         tableEditor={editTable}
       />
-      <GroupButtons groupDesktop={groupDesktop} />
+      <GroupButtons
+        onIncrement={incrementGroupDesktop}
+        onDecrement={decrementGroupDesktop}
+      />
     </div>
   );
 }

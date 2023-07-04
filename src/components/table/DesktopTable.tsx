@@ -10,7 +10,6 @@ interface Props {
 }
 
 function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
-  let rank = groupDesktop;
   const [renderedRows, setRenderedRows] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
@@ -24,11 +23,14 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
     }
   };
 
+  /* Builds the rows of the table */
   const renderRows = () => {
     const rows: JSX.Element[] = [];
 
     if (table && table.length > 0) {
-      for (let i = rank; i < groupDesktop + 10; i++) {
+      let group = 10 * (groupDesktop - 1) + 1;
+      let rank = group;
+      for (let i = rank; i < group + 10; i++) {
         const row = [];
         const cols: string[] = table[i];
 
@@ -76,10 +78,10 @@ function DesktopTable({ table, groupDesktop, tableEditor }: Props) {
     }
   };
 
-  /* Reloads the table when the csv dependency is changed */
+  /* Reloads the table when the dependencies are changed */
   useEffect(() => {
     renderRows();
-  }, [table]);
+  }, [table, groupDesktop]);
 
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>

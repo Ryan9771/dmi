@@ -1,14 +1,19 @@
 import getStyle from "../../Styles";
 
 interface Props {
-  groupDesktop: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
 }
 
-function GroupButtons({ groupDesktop }: Props) {
+function GroupButtons({ onIncrement, onDecrement }: Props) {
   return (
     <div className={getStyle(styles, "ctn")}>
-      <div className={getStyle(styles, "btnPrev")}>Prev</div>
-      <div className={getStyle(styles, "btnNext")}>Next</div>
+      <div onClick={onDecrement} className={getStyle(styles, "btnPrev")}>
+        Prev
+      </div>
+      <div onClick={onIncrement} className={getStyle(styles, "btnNext")}>
+        Next
+      </div>
     </div>
   );
 }
