@@ -21,16 +21,15 @@ export default function App() {
       try {
         const response = await fetch("/src/assets/data/dmi_2023_clusters.csv");
         const csvString = await response.text();
-        const newDataArray = csvToArray(csvString);
-        newDataArray.sort(function (a, b) {
+        const newnewDmi = csvToArray(csvString);
+        newnewDmi.sort(function (a, b) {
           return parseFloat(b[5]) - parseFloat(a[5]);
         });
-        setDmiCsv(newDataArray);
-        
-        const response2 = await fetch("/src/assets/data/correlations.csv")
+        setDmiCsv(newnewDmi);
+
+        const response2 = await fetch("/src/assets/data/correlations.csv");
         const data = await response2.text();
         setCorrelationCsv(correlationsToArray(data));
-        
       } catch (error) {
         console.log(error);
       }
@@ -40,26 +39,42 @@ export default function App() {
   }, []);
 
   /* Changes the csv array value */
-  const editTable = (i: string, j: string, val: string) => {
-    const row = parseInt(i);
+  const editTable = (k: string, j: string, val: string) => {
+    const row = parseInt(k);
     const col = parseInt(j);
     const newDmi = [...dmiCsv];
 
     if (correlationMode) {
+      const difference = parseFloat(val) - parseFloat(newDmi[row][col]);
+      newDmi[row][col] = formatNumber(val);
+      const baseCountry = newDmi[row][0];
+      for (let i = 1; i < newDmi.length - 1; i++) {
+        const newValue =
+          parseFloat(newDmi[i][col]) +
+          correlationCsv[baseCountry][newDmi[i][0]] * difference;
+        newDmi[i][col] = newValue.toFixed(3);
 
+        var sum =
+          parseFloat(newDmi[i][1]) +
+          parseFloat(newDmi[i][2]) +
+          parseFloat(newDmi[i][3]) +
+          parseFloat(newDmi[i][4]);
+        var average = sum / 4;
+        newDmi[i][5] = average.toFixed(3);
+      }
+    } else {
+      newDmi[row][col] = formatNumber(val);
+
+      /* Recalculates the Index value */
+      let sum =
+        parseFloat(newDmi[row][1]) +
+        parseFloat(newDmi[row][2]) +
+        parseFloat(newDmi[row][3]) +
+        parseFloat(newDmi[row][4]);
+
+      let average = sum / 4;
+      newDmi[row][5] = formatNumber(average.toString());
     }
-
-    newDmi[row][col] = formatNumber(val);
-
-    /* Recalculates the Index value */
-    let sum =
-      parseFloat(newDmi[row][1]) +
-      parseFloat(newDmi[row][2]) +
-      parseFloat(newDmi[row][3]) +
-      parseFloat(newDmi[row][4]);
-
-    let average = sum / 4;
-    newDmi[row][5] = formatNumber(average.toString());
 
     newDmi.sort(function (a, b) {
       return parseFloat(b[5]) - parseFloat(a[5]);

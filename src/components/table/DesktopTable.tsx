@@ -77,7 +77,6 @@ function DesktopTable({
 
         /* Handles Cluster mode column */
         if (clusterMode) {
-          console.log(cols[6]);
           row.push(
             <td key={Math.random()} id={`${i}-6`} className="rows text-center">
               {cols[6]}
