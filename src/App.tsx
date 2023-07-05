@@ -110,6 +110,8 @@ export default function App() {
       <FilterButtons
         toggleClusterMode={toggleClusterMode}
         toggleCorrelationMode={toggleCorrelationMode}
+        clusterMode={clusterMode}
+        correlationMode={correlationMode}
       />
       <DesktopTable
         table={dmiCsv}
