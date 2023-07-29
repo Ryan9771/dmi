@@ -1,10 +1,28 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../../services/firebase.config";
 import { useEffect, useState } from "react";
 
 function GetFromDatabase() {
   const [users, setUsers] = useState<{ id: string }[]>([]);
+  const [reload, setReload] = useState<boolean>(false);
   const usersCollectionRef = collection(db, "users");
+
+  const updateUser = async (id: string, age: number) => {
+    const userDoc = doc(db, "users", id);
+    const newValues = { age: age + 1 };
+    await updateDoc(userDoc, newValues);
+  };
+
+  const deleteUser = async (id: string) => {
+    const userDoc = doc(db, "users", id);
+    await deleteDoc(userDoc);
+  };
 
   useEffect(() => {
     const getUsers = async () => {
@@ -13,15 +31,30 @@ function GetFromDatabase() {
     };
 
     getUsers();
-  }, []);
+  }, [reload]);
 
   return (
     <div>
       {users.map((user: any) => {
         return (
-          <div>
+          <div className="flex items-center justify-center gap-3 my-5 ml-3">
             <p>Name: {user.name}</p>
             <p>Age: {user.age}</p>
+            <button
+              onClick={() => {
+                updateUser(user.id, user.age);
+                setReload(!reload);
+              }}
+            >
+              Increment Age
+            </button>
+            <button
+              onClick={() => {
+                deleteUser(user.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}
