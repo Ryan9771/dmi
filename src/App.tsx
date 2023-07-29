@@ -3,14 +3,16 @@ import _App from "./components/_App";
 import PageNotFound from "./components/PageNotFound";
 import GetFromDatabase from "./components/firebaseTest/GetFromDatabase";
 import PushToDatabase from "./components/firebaseTest/PushToDatabase";
+import FileUpload from "./components/firebaseTest/FileUpload";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<_App />} />
-        <Route path="/form" element={<GetFromDatabase />} />
-        <Route path="/upload" element={<PushToDatabase />} />
+        <Route path="/get/database" element={<GetFromDatabase />} />
+        <Route path="/upload/database" element={<PushToDatabase />} />
+        <Route path="/upload/file" element={<FileUpload />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

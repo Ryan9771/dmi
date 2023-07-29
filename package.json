@@ -18,11 +18,13 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.2",
     "firebase": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "react-router-hash-link": "^2.4.3"
+    "react-router-hash-link": "^2.4.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
