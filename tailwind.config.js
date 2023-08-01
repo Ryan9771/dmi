@@ -19,6 +19,8 @@ export default {
         'imperial-black': '#141414',
         'imperial-blue': '#0159A5',
         'imperial-gray': '#EBEBEB',
+        'button-gray': '#F3F4F6',
+        
       },
     },
   },

@@ -42,4 +42,8 @@
     .maps {
         @apply hidden border-b border shadow-md rounded-lg sm:w-[450px] m-4;
     }
+
+    .trans {
+        @apply transition duration-200;
+    }
 }

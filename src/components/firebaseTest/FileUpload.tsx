@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { storage } from "../../services/firebase.config";
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { v4 } from "uuid";
+import { FileEarmarkText } from "react-bootstrap-icons";
+import getStyle from "../../Styles";
 
 function FileUpload() {
   const [file, setFile] = useState<File | null>(null);
@@ -32,24 +34,59 @@ function FileUpload() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      <div className="flex items-center justify-center gap-4">
-        <input
-          type="file"
-          onChange={(event: any) => setFile(event.target.files[0])}
-        />
-        <button className="p-3 rounded-lg" onClick={uploadFile}>
-          Upload
-        </button>
-      </div>
+    // <div className="flex flex-col items-center gap-5">
+    //   <div className="flex items-center justify-center gap-4">
+    //     <input
+    //       type="file"
+    //       onChange={(event: any) => setFile(event.target.files[0])}
+    //     />
+    //     <button className="p-3 rounded-lg" onClick={uploadFile}>
+    //       Upload
+    //     </button>
+    //   </div>
 
-      <div className="flex flex-col gap-3 items-center">
-        {fileRefs.map((fileReference) => {
-          return <div>Url: {fileReference}</div>;
-        })}
+    //   <div className="flex flex-col gap-3 items-center">
+    //     {fileRefs.map((fileReference) => {
+    //       return <div>Url: {fileReference}</div>;
+    //     })}
+    //   </div>
+    // </div>
+
+    <div className={getStyle(styles, "ctn")}>
+      <div className={getStyle(styles, "uploadCtn")}>
+        <FileEarmarkText className={getStyle(styles, "icon")} />
+        <p className={getStyle(styles, "uploadText")}>
+          Upload a .csv or .xlsx file
+        </p>
       </div>
     </div>
   );
 }
+
+const styles = {
+  ctn: ["w-full", "h-full", "flex", "justify-center", "items-center"],
+  uploadCtn: [
+    "flex",
+    "flex-col",
+    "items-center",
+    "rounded-lg",
+    "gap-[35px]",
+    "bg-button-gray",
+    "border-[4px]",
+    "border-imperial-blue",
+    "px-24",
+    "py-16",
+    "shadow-md",
+  ],
+  icon: [
+    "fill-imperial-blue",
+    "w-10",
+    "h-10",
+    "cursor-pointer",
+    "hover:scale-110",
+    "trans",
+  ],
+  uploadText: ["font-semibold", "text-md"],
+};
 
 export default FileUpload;
