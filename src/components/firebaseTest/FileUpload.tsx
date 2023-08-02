@@ -39,21 +39,30 @@ function FileUpload() {
         <input
           type="file"
           id="fileUpload"
+          accept=".csv, .xlsx"
           onChange={(event: any) => setFile(event.target.files[0])}
           className="hidden"
         />
 
-        <label htmlFor="fileUpload">
-          <FileEarmarkText className={getStyle(styles, "icon")} />
-        </label>
+        <div className={getStyle(styles, "uploadSubCtn")}>
+          <label htmlFor="fileUpload">
+            <FileEarmarkText className={getStyle(styles, "icon")} />
+          </label>
 
-        {!file && (
-          <p className={getStyle(styles, "uploadText")}>
-            Upload a .csv or .xlsx file
-          </p>
+          {!file && (
+            <p className={getStyle(styles, "uploadText")}>
+              Upload a .csv or .xlsx file
+            </p>
+          )}
+
+          {file && (
+            <p className={getStyle(styles, "uploadText")}>{file.name}</p>
+          )}
+        </div>
+
+        {file && (
+          <button className={getStyle(styles, "uploadBtn")}>Upload</button>
         )}
-
-        {file && <button className="">Upload</button>}
       </div>
     </div>
   );
@@ -65,17 +74,29 @@ const styles = {
     "flex",
     "flex-col",
     "items-center",
+    "justify-center",
     "rounded-lg",
-    "gap-[35px]",
+    "gap-6",
     "bg-button-gray",
     "border-[4px]",
     "border-imperial-blue",
-    "px-16",
-    "sm:px-24",
-    "py-16",
+    "w-80",
+    "sm:w-96",
+    "h-60",
     "shadow-md",
     "trans",
   ],
+  uploadBtn: [
+    "bg-imperial-blue",
+    "text-white",
+    "rounded-md",
+    "px-3",
+    "py-1",
+    "font-normal",
+    "shadow-sm",
+    "hover:scale-110",
+  ],
+  uploadSubCtn: ["flex", "flex-col", "items-center", "gap-4"],
   icon: [
     "fill-imperial-blue",
     "w-10",
@@ -90,15 +111,6 @@ const styles = {
 export default FileUpload;
 
 // <div className="flex flex-col items-center gap-5">
-//   <div className="flex items-center justify-center gap-4">
-//     <input
-//       type="file"
-//       onChange={(event: any) => setFile(event.target.files[0])}
-//     />
-//     <button className="p-3 rounded-lg" onClick={uploadFile}>
-//       Upload
-//     </button>
-//   </div>
 
 //   <div className="flex flex-col gap-3 items-center">
 //     {fileRefs.map((fileReference) => {
