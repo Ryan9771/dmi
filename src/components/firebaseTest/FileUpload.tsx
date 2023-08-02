@@ -34,30 +34,26 @@ function FileUpload() {
   }, []);
 
   return (
-    // <div className="flex flex-col items-center gap-5">
-    //   <div className="flex items-center justify-center gap-4">
-    //     <input
-    //       type="file"
-    //       onChange={(event: any) => setFile(event.target.files[0])}
-    //     />
-    //     <button className="p-3 rounded-lg" onClick={uploadFile}>
-    //       Upload
-    //     </button>
-    //   </div>
-
-    //   <div className="flex flex-col gap-3 items-center">
-    //     {fileRefs.map((fileReference) => {
-    //       return <div>Url: {fileReference}</div>;
-    //     })}
-    //   </div>
-    // </div>
-
     <div className={getStyle(styles, "ctn")}>
       <div className={getStyle(styles, "uploadCtn")}>
-        <FileEarmarkText className={getStyle(styles, "icon")} />
-        <p className={getStyle(styles, "uploadText")}>
-          Upload a .csv or .xlsx file
-        </p>
+        <input
+          type="file"
+          id="fileUpload"
+          onChange={(event: any) => setFile(event.target.files[0])}
+          className="hidden"
+        />
+
+        <label htmlFor="fileUpload">
+          <FileEarmarkText className={getStyle(styles, "icon")} />
+        </label>
+
+        {!file && (
+          <p className={getStyle(styles, "uploadText")}>
+            Upload a .csv or .xlsx file
+          </p>
+        )}
+
+        {file && <button className="">Upload</button>}
       </div>
     </div>
   );
@@ -74,9 +70,11 @@ const styles = {
     "bg-button-gray",
     "border-[4px]",
     "border-imperial-blue",
-    "px-24",
+    "px-16",
+    "sm:px-24",
     "py-16",
     "shadow-md",
+    "trans",
   ],
   icon: [
     "fill-imperial-blue",
@@ -90,3 +88,21 @@ const styles = {
 };
 
 export default FileUpload;
+
+// <div className="flex flex-col items-center gap-5">
+//   <div className="flex items-center justify-center gap-4">
+//     <input
+//       type="file"
+//       onChange={(event: any) => setFile(event.target.files[0])}
+//     />
+//     <button className="p-3 rounded-lg" onClick={uploadFile}>
+//       Upload
+//     </button>
+//   </div>
+
+//   <div className="flex flex-col gap-3 items-center">
+//     {fileRefs.map((fileReference) => {
+//       return <div>Url: {fileReference}</div>;
+//     })}
+//   </div>
+// </div>
