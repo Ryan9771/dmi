@@ -114,12 +114,3 @@ const styles = {
 };
 
 export default FileUpload;
-
-// <div className="flex flex-col items-center gap-5">
-
-//   <div className="flex flex-col gap-3 items-center">
-//     {fileRefs.map((fileReference) => {
-//       return <div>Url: {fileReference}</div>;
-//     })}
-//   </div>
-// </div>
