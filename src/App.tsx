@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import _App from "./components/_App";
-import PageNotFound from "./components/PageNotFound";
+import _App from "./pages/_App";
+import PageNotFound from "./pages/PageNotFound";
 import GetFromDatabase from "./components/firebaseTest/GetFromDatabase";
 import PushToDatabase from "./components/firebaseTest/PushToDatabase";
 import FileUpload from "./components/firebaseTest/FileUpload";

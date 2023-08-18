@@ -11,6 +11,7 @@ import { formatNumber } from "../util/utils";
 function _App() {
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
   const [correlationCsv, setCorrelationCsv] = useState<NestedDict>({});
+
   const [groupDesktop, setGroupDesktop] = useState<number>(1);
   const [clusterMode, setClusterMode] = useState<boolean>(false);
   const [correlationMode, setCorrelationMode] = useState<boolean>(false);

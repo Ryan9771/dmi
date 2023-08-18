@@ -8,8 +8,17 @@ import getStyle from "../../Styles";
 function FileUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileRefs, setFileRefs] = useState<string[]>([]);
-
   const filesListRef = ref(storage, "files/");
+
+  useEffect(() => {
+    listAll(filesListRef).then((response) => {
+      response.items.forEach((itemRef) => {
+        getDownloadURL(itemRef).then((url) => {
+          setFileRefs((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
   const uploadFile = () => {
     if (!file) return;
@@ -21,17 +30,8 @@ function FileUpload() {
         setFileRefs((prev) => [...prev, url]);
       });
     });
+    console.log(fileRefs);
   };
-
-  useEffect(() => {
-    listAll(filesListRef).then((response) => {
-      response.items.forEach((itemRef) => {
-        getDownloadURL(itemRef).then((url) => {
-          setFileRefs((prev) => [...prev, url]);
-        });
-      });
-    });
-  }, []);
 
   return (
     <div className={getStyle(styles, "ctn")}>
@@ -61,7 +61,12 @@ function FileUpload() {
         </div>
 
         {file && (
-          <button className={getStyle(styles, "uploadBtn")}>Upload</button>
+          <button
+            onClick={uploadFile}
+            className={getStyle(styles, "uploadBtn")}
+          >
+            Upload
+          </button>
         )}
       </div>
     </div>
