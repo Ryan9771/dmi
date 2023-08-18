@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import _App from "./pages/_App";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import GetFromDatabase from "./components/firebaseTest/GetFromDatabase";
 import PushToDatabase from "./components/firebaseTest/PushToDatabase";
@@ -7,15 +7,15 @@ import FileUpload from "./components/firebaseTest/FileUpload";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={<_App />} />
+        <Route path="/" element={<Home />} />
         <Route path="/get/database" element={<GetFromDatabase />} />
         <Route path="/upload/database" element={<PushToDatabase />} />
         <Route path="/upload/file" element={<FileUpload />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
