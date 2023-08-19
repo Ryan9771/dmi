@@ -22,7 +22,8 @@ function FileUpload() {
 
   const uploadFile = () => {
     if (!file) return;
-
+    console.log(file.type);
+    console.log(file.name);
     const fileRef = ref(storage, `files/${file.name + v4()}`);
     uploadBytes(fileRef, file).then((snapshot) => {
       // Entering here means file uploaded successfully
@@ -94,6 +95,7 @@ const styles = {
   uploadBtn: [
     "bg-imperial-blue",
     "text-white",
+    "text-sm",
     "rounded-md",
     "px-3",
     "py-1",
