@@ -1,7 +1,13 @@
 import TableGroup from "../components/table/TableGroup";
+import Upload from "../components/upload/Upload";
 
 function Home() {
-  return <TableGroup />;
+  return (
+    <>
+      <TableGroup />
+      <Upload />
+    </>
+  );
 }
 
 export default Home;

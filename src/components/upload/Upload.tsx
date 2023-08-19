@@ -1,14 +1,30 @@
 import getStyle from "../../Styles";
 import { useEffect, useState } from "react";
 import { storage } from "../../services/firebase.config";
-import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  StorageReference,
+} from "firebase/storage";
 
 function Upload() {
   const [file, setFile] = useState<File | null>(null);
-  const [activeFileRefs, setActiveFileRefs] = useState<string[]>([]);
-  const activeFileListRef = ref(storage, "active/");
+  const [activeFileRef, setActiveFileRef] = useState<string>("");
 
-  useEffect(() => {}, [file]);
+  /* References */
+  const activeFileLocation = ref(storage, "active/");
+  const archiveFileLocation = ref(storage, "archive/");
+  const otherFileLocation = ref(storage, "others/");
+
+  useEffect(() => {
+    listAll(activeFileLocation).then((response) => {
+      response.items.forEach((item: StorageReference) =>
+        setActiveFileRef(item.name)
+      );
+    });
+  }, [file]);
   /* 
     
     1. Get everything in the active directory on firebase
@@ -22,7 +38,13 @@ function Upload() {
     */
   const uploadFile = () => {
     if (!file) return;
+
+    if (file.type !== "text/csv") {
+      return;
+    }
   };
+
+  return <p>This is the upload component</p>;
 }
 
 export default Upload;
