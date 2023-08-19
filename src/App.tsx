@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import GetFromDatabase from "./components/firebaseTest/GetFromDatabase";
 import PushToDatabase from "./components/firebaseTest/PushToDatabase";
-import FileUpload from "./components/firebaseTest/FileUpload";
+import Upload from "./pages/Upload";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/get/database" element={<GetFromDatabase />} />
         <Route path="/upload/database" element={<PushToDatabase />} />
-        <Route path="/upload/file" element={<FileUpload />} />
+        <Route path="/upload/file" element={<Upload />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </HashRouter>

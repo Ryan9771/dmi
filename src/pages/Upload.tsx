@@ -1,10 +1,9 @@
-import getStyle from "../../Styles";
+import getStyle from "../Styles";
 import { useEffect, useState } from "react";
-import { storage } from "../../services/firebase.config";
+import { storage } from "../services/firebase.config";
 import {
   ref,
   uploadBytes,
-  getDownloadURL,
   listAll,
   StorageReference,
   deleteObject,
@@ -14,37 +13,33 @@ import { FileEarmarkText } from "react-bootstrap-icons";
 
 function Upload() {
   const [file, setFile] = useState<File | null>(null);
-  const [activeFileRef, setActiveFileRef] = useState<string>("");
+  const [activeFileName, setActiveFileName] = useState<string>("");
   const activeFileLocation = ref(storage, "active/");
 
   useEffect(() => {
     listAll(activeFileLocation).then((response) => {
       response.items.forEach((item: StorageReference) =>
-        setActiveFileRef(item.name)
+        setActiveFileName(item.name)
       );
     });
   }, [file]);
 
   const uploadFile = () => {
     if (!file || file.type !== "text/csv") return;
-    const fileRef = ref(storage, `active/${file.name}`);
+    const activeFileRef = ref(storage, `active/${file.name}`);
+    const archiveFileRef = ref(storage, `archive/${file.name + v4()}`);
 
     /* If there is an active file, move it to archive */
-    if (activeFileRef) {
-      const srcFileRef = ref(storage, `active/${activeFileRef}`);
-      const destFileRef = ref(storage, `archive/${activeFileRef + v4()}`);
-      getDownloadURL(srcFileRef)
-        .then((url) => fetch(url))
-        .then((response) => response.blob())
-        .then((blob) => uploadBytes(destFileRef, blob))
-        .then(() => deleteObject(srcFileRef))
-        .then(() => console.log("File moved and deleted"))
-        .catch((error) => console.log("Error moving file: ", error));
+    if (activeFileName) {
+      deleteObject(ref(storage, `active/${activeFileName}`));
     }
     // Upload file to active directory
-    uploadBytes(fileRef, file).then(() => {
-      setActiveFileRef(file.name);
+    uploadBytes(activeFileRef, file).then(() => {
+      setActiveFileName(file.name);
     });
+
+    // Upload file to archive directory as backup
+    uploadBytes(archiveFileRef, file).then(() => {});
   };
 
   return (
