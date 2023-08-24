@@ -29,7 +29,9 @@ function Upload() {
     const activeFileRef = ref(storage, `active/${file.name}`);
     const archiveFileRef = ref(storage, `archive/${file.name + v4()}`);
 
-    /* If there is an active file, move it to archive */
+    // TODO: Check if it is a particular file name
+
+    /* If there is an active file, delete it */
     if (activeFileName) {
       deleteObject(ref(storage, `active/${activeFileName}`));
     }

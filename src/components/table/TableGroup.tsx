@@ -1,7 +1,8 @@
 import FilterButtons from "../buttons/FilterButtons";
 import GroupButtons from "../buttons/GroupButtons";
 import DesktopTable from "../table/DesktopTable";
-
+import { storage } from "../../services/firebase.config";
+import { ref, getDownloadURL } from "firebase/storage";
 import {
   NestedDict,
   correlationsToArray,
@@ -18,18 +19,24 @@ function TableGroup() {
   const [clusterMode, setClusterMode] = useState<boolean>(false);
   const [correlationMode, setCorrelationMode] = useState<boolean>(false);
 
-  /* Parses the data files on load */
+  const ACTIVE_URL = ref(storage, "active/dmi_2023_clusters.csv");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/src/assets/data/dmi_2023_clusters.csv");
+        /* Get URL and csv from active folder in firebase storage */
+        const csvURL = await getDownloadURL(ACTIVE_URL);
+        const response = await fetch(csvURL);
         const csvString = await response.text();
-        const newnewDmi = csvToArray(csvString);
-        newnewDmi.sort(function (a, b) {
+        const csvArray = csvToArray(csvString);
+
+        /* Sorts the csv according to index */
+        csvArray.sort(function (a, b) {
           return parseFloat(b[5]) - parseFloat(a[5]);
         });
-        setDmiCsv(newnewDmi);
+        setDmiCsv(csvArray);
 
+        /* Fetch the correlations csv locally */
         const response2 = await fetch("/src/assets/data/correlations.csv");
         const data = await response2.text();
         setCorrelationCsv(correlationsToArray(data));
@@ -40,6 +47,29 @@ function TableGroup() {
 
     fetchData();
   }, []);
+
+  /* Parses the data files on load */
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("/src/assets/data/dmi_2023_clusters.csv");
+  //       const csvString = await response.text();
+  //       const newnewDmi = csvToArray(csvString);
+  //       newnewDmi.sort(function (a, b) {
+  //         return parseFloat(b[5]) - parseFloat(a[5]);
+  //       });
+  //       setDmiCsv(newnewDmi);
+
+  //       const response2 = await fetch("/src/assets/data/correlations.csv");
+  //       const data = await response2.text();
+  //       setCorrelationCsv(correlationsToArray(data));
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   /* Changes the csv array value */
   const editTable = (k: string, j: string, val: string) => {
