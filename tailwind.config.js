@@ -20,6 +20,10 @@ export default {
         'imperial-blue': '#0159A5',
         'imperial-gray': '#EBEBEB',
         'button-gray': '#F3F4F6',
+        'background': '#F0F5F7',
+        'imperial-red': '#A41A00',
+        'subtle-black': "#1E1E1E",
+        'header-blue': "#002146",
         
       },
     },
