@@ -26,9 +26,41 @@ function IntroAbout() {
 }
 
 const style = {
-  ctn: ["w-full", "flex", "flex-col", "gap-8", "mt-4", "items-center"],
-  textBox: ["p-4", "bg-white", "rounded-md", "flex", "flex-col", "gap-4"],
-  img: ["rounded-md", "w-80"],
+  ctn: [
+    "w-full",
+    "flex",
+    "flex-col",
+    "gap-8",
+    "mt-4",
+    "lg:mt-16",
+    "items-center",
+    "trans",
+    "lg:flex-row",
+    "lg:justify-center",
+    "md:gap-32",
+  ],
+  textBox: [
+    "p-4",
+    "bg-white",
+    "rounded-md",
+    "flex",
+    "flex-col",
+    "gap-4",
+    "trans",
+    "md:w-4/6",
+    "leading-6",
+    "max-w-xl",
+    "lg:leading-7",
+    "lg:max-w-lg",
+  ],
+  img: [
+    "rounded-md",
+    "w-80",
+    "md:w-96",
+    "mdl:w-[450px]",
+    "trans",
+    "xl:w-[500px]",
+  ],
 };
 
 export default IntroAbout;
