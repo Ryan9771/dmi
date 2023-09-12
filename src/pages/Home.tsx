@@ -1,11 +1,13 @@
 import getStyle from "../Styles";
 import Navbar from "../components/navbar/Navbar";
 import TableGroup from "../components/table/TableGroup";
+import Intro from "../components/intro/Intro";
 
 function Home() {
   return (
     <div className={getStyle(style, "ctn")}>
       <Navbar />
+      <Intro />
       <TableGroup />
     </div>
   );
@@ -20,6 +22,7 @@ const style = {
     "bg-background",
     "items-center",
     "p-3",
+    "gap-8",
   ],
 };
 
