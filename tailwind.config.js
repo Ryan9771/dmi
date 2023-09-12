@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        "mdl": '820px',
+      },
       colors: {
         'primary': '#FEFDE8',
         'secondary': '#003049',

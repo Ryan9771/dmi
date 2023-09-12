@@ -17,10 +17,10 @@ function Intro() {
 }
 
 const style = {
-  ctn: ["w-full", "flex", "flex-col", "gap-5"],
-  headingCtn: ["flex", "flex-col", "gap-3"],
-  headingRed: ["text-imperial-red", "text-2xl", "font-medium"],
-  headingBlue: ["text-header-blue", "text-xl", "font-medium"],
+  ctn: ["w-full", "flex", "flex-col", "gap-5", "sm:p-5"],
+  headingCtn: ["flex", "flex-col", "gap-3", "mdl:flex-row", "mdl:items-center"],
+  headingRed: ["text-imperial-red", "text-2xl", "font-medium", "md:text-3xl"],
+  headingBlue: ["text-header-blue", "text-xl", "font-medium", "md:text-3xl"],
 };
 
 export default Intro;
