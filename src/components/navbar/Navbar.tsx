@@ -32,12 +32,21 @@ const style = {
     "sm:py-2",
     "md:px-6",
     "md:py-3",
+    "trans",
   ],
-  logoIcon: ["font-semibold", "text-5xl", "md:text-6xl"],
-  logoCtn: ["flex", "items-center", "gap-3", "cursor-pointer"],
-  logoText: ["w-32", "font-semibold", "text-sm", "md:text-base"],
+  logoIcon: ["font-semibold", "text-5xl", "md:text-6xl", "trans"],
+  logoCtn: ["flex", "items-center", "gap-3", "cursor-pointer", "trans"],
+  logoText: [
+    "w-32",
+    "font-semibold",
+    "text-sm",
+    "sm:text-base",
+    "md:text-xl",
+    "md:w-52",
+    "trans",
+  ],
   subNavbar: ["flex", "items-center", "gap-4", "md:gap-10"],
-  subNavbarItem: ["font-semibold", "text-xs", "cursor-pointer", "sm:text-sm"],
+  subNavbarItem: ["font-semibold", "text-xs", "cursor-pointer", "sm:text-base"],
 };
 
 export default Navbar;
