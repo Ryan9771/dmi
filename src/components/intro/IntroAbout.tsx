@@ -52,6 +52,8 @@ const style = {
     "max-w-xl",
     "lg:leading-7",
     "lg:max-w-lg",
+    "lg:p-7",
+    "lg:px-8",
   ],
   img: [
     "rounded-md",

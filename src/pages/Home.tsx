@@ -18,7 +18,6 @@ const style = {
     "flex",
     "flex-col",
     "w-full",
-    "h-full",
     "bg-background",
     "items-center",
     "p-3",
