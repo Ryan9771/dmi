@@ -20,7 +20,8 @@ const style = {
     "w-full",
     "bg-background",
     "items-center",
-    "p-3",
+    "px-3",
+    "pb-3",
     "gap-8",
   ],
 };

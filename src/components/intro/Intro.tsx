@@ -18,6 +18,8 @@ function Intro() {
 
 const style = {
   ctn: [
+    "mt-24",
+    "sm:mt-32",
     "w-full",
     "flex",
     "flex-col",

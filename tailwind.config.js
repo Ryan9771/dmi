@@ -29,6 +29,9 @@ export default {
         'header-blue': "#002146",
         
       },
+      width: {
+        '96': '96%',
+      },
     },
   },
   plugins: [],

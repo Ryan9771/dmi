@@ -37,12 +37,13 @@ const style = {
     "trans",
     "lg:flex-row",
     "lg:justify-center",
-    "md:gap-32",
+    "md:gap-20",
   ],
   textBox: [
     "p-4",
     "bg-white",
     "rounded-md",
+    "shadow-lg",
     "flex",
     "flex-col",
     "gap-4",
@@ -57,6 +58,7 @@ const style = {
   ],
   img: [
     "rounded-md",
+    "shadow-md",
     "w-80",
     "md:w-96",
     "mdl:w-[450px]",
