@@ -27,6 +27,7 @@ const style = {
     "gap-4",
     "leading-6",
     "sm:max-w-xl",
+    "sm:px-6",
     "md:max-w-2xl",
     "md:px-8",
     "md:py-6",

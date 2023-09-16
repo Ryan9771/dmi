@@ -19,12 +19,12 @@ function Intro() {
 const style = {
   ctn: [
     "mt-24",
-    "sm:mt-32",
     "w-full",
     "flex",
     "flex-col",
     "gap-5",
     "sm:p-5",
+    "md:mt-32",
     "md:gap-7",
     "lg:gap-10",
   ],
