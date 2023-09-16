@@ -26,6 +26,7 @@ const style = {
     "md:px-0",
     "pb-3",
     "gap-10",
+    "sm:gap-16",
   ],
 };
 
