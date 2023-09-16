@@ -1,6 +1,6 @@
 import getStyle from "../Styles";
 import Navbar from "../components/navbar/Navbar";
-// import TableGroup from "../components/table/TableGroup";
+import Table from "../components/table/Table";
 import Intro from "../components/intro/Intro";
 import About from "../components/about/About";
 
@@ -10,7 +10,7 @@ function Home() {
       <Navbar />
       <Intro />
       <About />
-      {/* <TableGroup /> */}
+      <Table />
     </div>
   );
 }
@@ -26,6 +26,7 @@ const style = {
     "pb-3",
     "gap-10",
     "sm:gap-16",
+    "lg:gap-20",
     "md:px-0",
   ],
 };

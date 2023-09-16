@@ -49,7 +49,6 @@ const styles = {
     "flex-col",
     "justify-between",
     "items-center",
-    "mt-14",
     "p-3",
     "px-5",
     "rounded-lg",

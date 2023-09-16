@@ -46,7 +46,7 @@ function About() {
 }
 
 const style = {
-  ctn: ["flex", "flex-col", "w-full", "gap-8", "items-center"],
+  ctn: ["flex", "flex-col", "w-full", "gap-8", "items-center", "md:gap-10"],
   header: [
     "text-xl",
     "font-medium",
