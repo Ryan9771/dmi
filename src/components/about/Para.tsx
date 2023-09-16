@@ -33,7 +33,7 @@ const style = {
     "lg:p-7",
     "lg:px-8",
   ],
-  text: ["text-base"],
+  text: ["text-base", "sm:text-lg", "text-justify"],
 };
 
 export default Para;

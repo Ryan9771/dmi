@@ -46,8 +46,14 @@ function About() {
 }
 
 const style = {
-  ctn: ["flex", "flex-col", "w-full", "gap-8"],
-  header: ["text-xl", "font-medium", "text-header-blue", "text-center"],
+  ctn: ["flex", "flex-col", "w-full", "gap-8", "items-center"],
+  header: [
+    "text-xl",
+    "font-medium",
+    "text-header-blue",
+    "text-center",
+    "sm:text-2xl",
+  ],
 };
 
 export default About;
