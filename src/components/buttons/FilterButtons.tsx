@@ -15,7 +15,7 @@ function FilterButtons({
 }: Props) {
   return (
     <div className={getStyle(styles, "ctn")}>
-      <p className={getStyle(styles, "txt")}>DMI Table</p>
+      <p className={getStyle(styles, "txt")}>Modes:</p>
 
       <div className={getStyle(styles, "btnGroup")}>
         <div
@@ -62,10 +62,9 @@ const styles = {
     "p-2",
     "px-4",
     "text-sm",
-    "bg-gray-100",
+    "bg-white",
     "cursor-pointer",
     "hover:bg-gray-200",
-    "hover:scale-105",
     "border-2",
   ],
   btnCorrelations: [
@@ -74,10 +73,9 @@ const styles = {
     "p-2",
     "px-4",
     "text-sm",
-    "bg-gray-100",
+    "bg-white",
     "cursor-pointer",
     "hover:bg-gray-200",
-    "hover:scale-105",
     "border-2",
   ],
 };
