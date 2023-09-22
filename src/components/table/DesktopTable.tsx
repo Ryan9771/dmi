@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import DesktopCell from "./DesktopCell";
 import { formatNumber } from "../../util/utils";
 
-interface Props {
+interface TableProps {
   table: string[][];
-  groupDesktop: number;
+  groupNumber: number;
   tableEditor: (i: string, j: string, val: string) => void;
   clusterMode: boolean;
   correlationMode: boolean;
@@ -13,11 +13,12 @@ interface Props {
 
 function DesktopTable({
   table,
-  groupDesktop,
+  groupNumber,
   tableEditor,
   clusterMode,
   correlationMode,
-}: Props) {
+}: TableProps) {
+  /* Row State */
   const [renderedRows, setRenderedRows] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
@@ -36,7 +37,7 @@ function DesktopTable({
     const rows: JSX.Element[] = [];
 
     if (table && table.length > 0) {
-      let group = 10 * (groupDesktop - 1) + 1;
+      let group = 10 * (groupNumber - 1) + 1;
       let rank = group;
       for (let i = rank; i < group + 10; i++) {
         const row = [];
@@ -98,7 +99,7 @@ function DesktopTable({
   /* Reloads the table when the dependencies are changed */
   useEffect(() => {
     renderRows();
-  }, [table, groupDesktop, clusterMode, correlationMode]);
+  }, [table, groupNumber, clusterMode, correlationMode]);
 
   return (
     <div id="table-div" className={getStyle(styles, "ctn")}>
