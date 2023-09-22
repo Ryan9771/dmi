@@ -1,11 +1,31 @@
 import getStyle from "../../Styles";
+import { useCallback } from "react";
 
 interface Props {
-  onIncrement: () => void;
-  onDecrement: () => void;
+  incrementDesktop: () => void;
+  decrementDesktop: () => void;
+  incrementMobile: () => void;
+  decrementMobile: () => void;
 }
 
-function GroupButtons({ onIncrement, onDecrement }: Props) {
+function GroupButtons({
+  incrementDesktop,
+  decrementDesktop,
+  incrementMobile,
+  decrementMobile,
+}: Props) {
+  const onIncrement = () =>
+    useCallback(() => {
+      incrementDesktop();
+      incrementMobile();
+    }, []);
+
+  const onDecrement = () =>
+    useCallback(() => {
+      decrementDesktop();
+      decrementMobile();
+    }, []);
+
   return (
     <div className={getStyle(styles, "ctn")}>
       <div onClick={onDecrement} className={getStyle(styles, "btnPrev")}>

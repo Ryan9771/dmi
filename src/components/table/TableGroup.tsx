@@ -12,10 +12,13 @@ import { formatNumber } from "../../util/utils";
 import { useState, useEffect } from "react";
 
 function TableGroup() {
+  /* Dataset */
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
   const [correlationCsv, setCorrelationCsv] = useState<NestedDict>({});
 
+  /* Table logic variables */
   const [groupDesktop, setGroupDesktop] = useState<number>(1);
+  const [groupMobile, setGroupMobile] = useState<number>(1);
   const [clusterMode, setClusterMode] = useState<boolean>(false);
   const [correlationMode, setCorrelationMode] = useState<boolean>(false);
 
@@ -130,6 +133,20 @@ function TableGroup() {
     }
   };
 
+  /* Increments the group index for mobile */
+  const incrementGroupMobile = () => {
+    if (groupMobile > 1) {
+      setGroupMobile(groupMobile - 1);
+    }
+  };
+
+  /* Decrements the group index for mobile */
+  const decrementGroupMobile = () => {
+    if (groupMobile < 20) {
+      setGroupMobile(groupMobile + 1);
+    }
+  };
+
   const toggleClusterMode = () => {
     setClusterMode(!clusterMode);
   };
@@ -154,8 +171,10 @@ function TableGroup() {
         tableEditor={editTable}
       />
       <GroupButtons
-        onIncrement={incrementGroupDesktop}
-        onDecrement={decrementGroupDesktop}
+        incrementDesktop={incrementGroupDesktop}
+        decrementDesktop={decrementGroupDesktop}
+        incrementMobile={incrementGroupMobile}
+        decrementMobile={decrementGroupMobile}
       />
     </div>
   );
