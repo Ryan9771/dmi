@@ -1,13 +1,14 @@
 import getStyle from "../../Styles";
 import { useState, useEffect } from "react";
 import { formatNumber } from "../../util/utils";
+import MobileCell from "./MobileCell";
 
 const HEADER_LIST = ["COUNTRY", "P1", "P2", "P3", "P4", "INDEX"];
 
 interface MobileTableProps {
   table: string[][];
   groupMobile: number;
-  //   tableEditor: (i: string, j: string, val: string) => void;
+  tableEditor: (i: string, j: string, val: string) => void;
   clusterMode: boolean;
   correlationMode: boolean;
 }
@@ -15,11 +16,22 @@ interface MobileTableProps {
 function MobileTable({
   table,
   groupMobile,
-  //   tableEditor,
+  tableEditor,
   clusterMode,
   correlationMode,
 }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
+
+  /* Defines an onchange function property */
+  const handleBlur = (event: React.FocusEvent<HTMLTableCellElement>) => {
+    const text = event.target.innerText.trim();
+    const id: string | undefined =
+      event.target.attributes.getNamedItem("id")?.value;
+    if (id) {
+      const [row, col] = id.split("-");
+      tableEditor(row, col, text);
+    }
+  };
 
   /* Renders the rows upon load */
   const renderRows = () => {
@@ -50,9 +62,11 @@ function MobileTable({
           let contentRow: JSX.Element;
           if (j >= 1 && j <= 4) {
             contentRow = (
-              <td className="rows-mobile" contentEditable>
-                {formatNumber(iterCols[j])}
-              </td>
+              <MobileCell
+                content={formatNumber(iterCols[j])}
+                id={`${i}-${j}`}
+                handleBlur={handleBlur}
+              />
             );
           } else if (j === 5) {
             contentRow = (
