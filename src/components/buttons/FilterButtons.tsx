@@ -64,19 +64,21 @@ const styles = {
     "text-sm",
     "bg-white",
     "cursor-pointer",
-    "hover:bg-gray-200",
     "border-2",
+    "select-none",
+    "hover:bg-gray-200",
   ],
   btnCorrelations: [
     "ml-4",
     "rounded-full",
     "p-2",
     "px-4",
+    "select-none",
     "text-sm",
     "bg-white",
     "cursor-pointer",
-    "hover:bg-gray-200",
     "border-2",
+    "hover:bg-gray-200",
   ],
 };
 

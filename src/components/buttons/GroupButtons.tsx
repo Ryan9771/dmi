@@ -35,7 +35,6 @@ function GroupButtons({
   );
 }
 
-// TODO: Add user-select none to buttons
 const styles = {
   ctn: ["flex", "justify-between", "items-center", "mt-10", "p-3"],
   btnPrev: [
@@ -47,6 +46,7 @@ const styles = {
     "cursor-pointer",
     "hover:bg-gray-200",
     "border-2",
+    "select-none",
     "mr-8",
     "md:mr-10",
   ],
@@ -57,6 +57,7 @@ const styles = {
     "text-sm",
     "bg-white",
     "cursor-pointer",
+    "select-none",
     "hover:bg-gray-200",
     "border-2",
   ],

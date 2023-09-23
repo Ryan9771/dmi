@@ -48,6 +48,9 @@ function MobileTable({
         let innerRows: JSX.Element[] = [];
         const iterCols = table[i];
 
+        /* Debug */
+        console.log(`${i}: ${iterCols}`);
+
         /* Pushes the rank into the table */
         innerRows.push(
           <tr>

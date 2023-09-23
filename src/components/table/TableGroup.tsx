@@ -137,15 +137,15 @@ function TableGroup() {
 
   /* Increments the group index for mobile */
   const incrementGroupMobile = () => {
-    if (groupMobile > 1) {
-      setGroupMobile(groupMobile - 1);
+    if (groupMobile < 20) {
+      setGroupMobile(groupMobile + 1);
     }
   };
 
   /* Decrements the group index for mobile */
   const decrementGroupMobile = () => {
-    if (groupMobile < 20) {
-      setGroupMobile(groupMobile + 1);
+    if (groupMobile > 1) {
+      setGroupMobile(groupMobile - 1);
     }
   };
 
