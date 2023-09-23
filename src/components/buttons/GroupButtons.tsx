@@ -1,5 +1,4 @@
 import getStyle from "../../Styles";
-import { useCallback } from "react";
 
 interface Props {
   incrementDesktop: () => void;
@@ -14,17 +13,15 @@ function GroupButtons({
   incrementMobile,
   decrementMobile,
 }: Props) {
-  const onIncrement = () =>
-    useCallback(() => {
-      incrementDesktop();
-      incrementMobile();
-    }, []);
+  const onIncrement = () => {
+    incrementDesktop();
+    incrementMobile();
+  };
 
-  const onDecrement = () =>
-    useCallback(() => {
-      decrementDesktop();
-      decrementMobile();
-    }, []);
+  const onDecrement = () => {
+    decrementDesktop();
+    decrementMobile();
+  };
 
   return (
     <div className={getStyle(styles, "ctn")}>
@@ -38,6 +35,7 @@ function GroupButtons({
   );
 }
 
+// TODO: Add user-select none to buttons
 const styles = {
   ctn: ["flex", "justify-between", "items-center", "mt-10", "p-3"],
   btnPrev: [
