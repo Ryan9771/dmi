@@ -142,9 +142,6 @@ function TableGroup() {
   const incrementGroupMobile = () => {
     if (groupMobile < 20) {
       setGroupMobile(groupMobile + 1);
-      console.log("===============");
-      console.log("Group mobile: " + groupMobile);
-      console.log("===============");
     }
   };
 
