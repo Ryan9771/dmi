@@ -37,19 +37,18 @@ function MobileTable({
   const renderRows = () => {
     let group = 5 * (groupMobile - 1) + 1;
     let rank = group;
-    // let firstRow = true;
+    let firstTable = true;
 
     /* Array of tables */
     const tableList: JSX.Element[] = [];
 
     if (table && table.length > 0) {
       for (let i = rank; i < group + 5; i++) {
-        // const tableRow: JSX.Element[] = [];
         let innerRows: JSX.Element[] = [];
         const iterCols = table[i];
 
         /* Debug */
-        console.log(`${i}: ${iterCols}`);
+        // console.log(`${i}: ${iterCols}`);
 
         /* Pushes the rank into the table */
         innerRows.push(
@@ -99,11 +98,20 @@ function MobileTable({
         }
 
         /* We now push the table to the list of tables */
-        tableList.push(
-          <table className={getStyle(style, "table")}>
-            <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
-          </table>
-        );
+        if (firstTable) {
+          tableList.push(
+            <table className={getStyle(style, "tableFirst")}>
+              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+            </table>
+          );
+          firstTable = false;
+        } else {
+          tableList.push(
+            <table className={getStyle(style, "table")}>
+              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+            </table>
+          );
+        }
       }
     }
 
@@ -132,7 +140,8 @@ const style = {
     "justify-center",
     "sm:hidden",
   ],
-  table: ["w-full", "h-full", "text-left"],
+  tableFirst: ["w-full", "h-full", "text-left"],
+  table: ["w-full", "h-full", "text-left", "border-t-2", "border-black"],
   tbody: ["rounded-xl"],
 };
 

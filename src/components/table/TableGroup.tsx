@@ -69,7 +69,10 @@ function TableGroup() {
         const data = await response2.text();
         setCorrelationCsv(correlationsToArray(data));
       } catch (error) {
+        console.log("=============");
+        console.log("Unable to parse file");
         console.log(error);
+        console.log("=============");
       }
     };
 
@@ -139,6 +142,9 @@ function TableGroup() {
   const incrementGroupMobile = () => {
     if (groupMobile < 20) {
       setGroupMobile(groupMobile + 1);
+      console.log("===============");
+      console.log("Group mobile: " + groupMobile);
+      console.log("===============");
     }
   };
 
