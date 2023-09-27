@@ -1,4 +1,5 @@
 import getStyle from "../../Styles";
+import { HashLink } from "react-router-hash-link";
 
 function Navbar() {
   return (
@@ -10,8 +11,12 @@ function Navbar() {
         </p>
       </div>
       <div className={getStyle(style, "subNavbar")}>
-        <p className={getStyle(style, "subNavbarItem")}>About</p>
-        <p className={getStyle(style, "subNavbarItem")}>Visualisation</p>
+        <HashLink to="/#intro" className={getStyle(style, "subNavbarItem")}>
+          About
+        </HashLink>
+        <HashLink to="/#table" className={getStyle(style, "subNavbarItem")}>
+          Visualisation
+        </HashLink>
       </div>
     </div>
   );

@@ -161,7 +161,7 @@ function TableGroup() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div id="table" className="w-full flex flex-col items-center">
       <FilterButtons
         toggleClusterMode={toggleClusterMode}
         toggleCorrelationMode={toggleCorrelationMode}
