@@ -44,7 +44,7 @@ function DesktopTable({
         const cols: string[] = table[i];
 
         row.push(
-          <td id={`${i}-0`} className="row-header">
+          <td key={rank} id={`${i}-0`} className="row-header">
             {rank}
           </td>
         );
@@ -58,6 +58,7 @@ function DesktopTable({
                 content={formatNumber(content)}
                 id={`${i}-${j}`}
                 handleBlur={handleBlur}
+                key={`${i}-${j}`}
               />
             );
           } else if (j === 5) {

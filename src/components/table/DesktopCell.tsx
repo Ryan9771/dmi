@@ -23,7 +23,7 @@ const keyPressHandler = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
       event.preventDefault();
       target.blur();
       break;
-      
+
     default:
       if (!allDigits(event.key)) {
         event.preventDefault();
@@ -37,7 +37,6 @@ function DesktopCell({ content, id, handleBlur }: Props) {
     <td
       onBlur={handleBlur}
       onKeyDown={keyPressHandler}
-      key={Math.random()}
       id={id}
       contentEditable
       className="rows"

@@ -49,7 +49,7 @@ function MobileTable({
 
         /* Pushes the rank into the table */
         innerRows.push(
-          <tr>
+          <tr key={rank}>
             <th className="headers-mobile-rank">RANK</th>
             <th className="row-header-mobile">{rank}</th>
           </tr>
@@ -65,6 +65,7 @@ function MobileTable({
                 content={formatNumber(iterCols[j])}
                 id={`${i}-${j}`}
                 handleBlur={handleBlur}
+                key={`${i}-${j}`}
               />
             );
           } else if (j === 5) {
@@ -77,7 +78,7 @@ function MobileTable({
 
           /* We now push the row to the list of rows */
           innerRows.push(
-            <tr>
+            <tr key={Math.random()}>
               <td className="headers-mobile">{HEADER_LIST[j]}</td>
               {contentRow}
             </tr>
