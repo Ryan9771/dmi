@@ -180,7 +180,7 @@ function TableGroup() {
       />
       <MobileTable
         table={dmiCsv}
-        groupMobile={groupDesktop}
+        groupMobile={groupMobile}
         clusterMode={clusterMode}
         correlationMode={correlationMode}
         tableEditor={editTable}
