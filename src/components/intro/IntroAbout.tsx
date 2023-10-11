@@ -4,7 +4,7 @@ import homeImg from "/homeImage.webp";
 function IntroAbout() {
   return (
     <div className={getStyle(style, "ctn")}>
-      <img src={homeImg} className={getStyle(style, "img")} />
+      <img alt="" src={homeImg} className={getStyle(style, "img")} />
       <div className={getStyle(style, "textBox")}>
         <p>
           Citi, in partnership with Imperial College Business School’s Centre
@@ -48,7 +48,6 @@ const style = {
     "rounded-md",
     "shadow-lg",
     "flex",
-    "text-justify",
     "flex-col",
     "gap-4",
     "trans",

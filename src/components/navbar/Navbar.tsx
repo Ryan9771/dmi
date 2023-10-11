@@ -5,16 +5,24 @@ function Navbar() {
   return (
     <div className={getStyle(style, "ctn")}>
       <div className={getStyle(style, "logoCtn")}>
-        <p className={getStyle(style, "logoIcon")}>B</p>
-        <p className={getStyle(style, "logoText")}>
+        <h1 className={getStyle(style, "logoIcon")}>B</h1>
+        <h1 className={getStyle(style, "logoText")}>
           Imperial College Business School
-        </p>
+        </h1>
       </div>
       <div className={getStyle(style, "subNavbar")}>
-        <HashLink to="/#intro" className={getStyle(style, "subNavbarItem")}>
+        <HashLink
+          aria-label="Jump to the about section to read about our project"
+          to="/#intro"
+          className={getStyle(style, "subNavbarItem")}
+        >
           About
         </HashLink>
-        <HashLink to="/#table" className={getStyle(style, "subNavbarItem")}>
+        <HashLink
+          aria-label="Jump to the interactive table"
+          to="/#table"
+          className={getStyle(style, "subNavbarItem")}
+        >
           Visualisation
         </HashLink>
       </div>

@@ -5,10 +5,10 @@ function Intro() {
   return (
     <div id="intro" className={getStyle(style, "ctn")}>
       <div className={getStyle(style, "headingCtn")}>
-        <p className={getStyle(style, "headingRed")}>Digital Money Index:</p>
-        <p className={getStyle(style, "headingBlue")}>
+        <h1 className={getStyle(style, "headingRed")}>Digital Money Index:</h1>
+        <h1 className={getStyle(style, "headingBlue")}>
           The Rise of an Entrepreneurial State
-        </p>
+        </h1>
       </div>
 
       <IntroAbout />

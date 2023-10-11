@@ -19,6 +19,7 @@ function FilterButtons({
 
       <div className={getStyle(styles, "btnGroup")}>
         <div
+          aria-label="Toggle cluster mode"
           onClick={toggleClusterMode}
           className={
             clusterMode
@@ -29,6 +30,7 @@ function FilterButtons({
           Clusters
         </div>
         <div
+          aria-label="Toggle correlation mode"
           onClick={toggleCorrelationMode}
           className={
             correlationMode

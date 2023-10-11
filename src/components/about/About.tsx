@@ -38,10 +38,10 @@ const ABOUT_PARAGRAPHS = [
 
 function About() {
   return (
-    <div className={getStyle(style, "ctn")}>
+    <main id="main-content" className={getStyle(style, "ctn")}>
       <div className={getStyle(style, "header")}>About our Project</div>
       <Para paragraphs={ABOUT_PARAGRAPHS} />
-    </div>
+    </main>
   );
 }
 

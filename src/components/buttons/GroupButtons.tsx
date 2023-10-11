@@ -25,10 +25,18 @@ function GroupButtons({
 
   return (
     <div className={getStyle(styles, "ctn")}>
-      <div onClick={onDecrement} className={getStyle(styles, "btnPrev")}>
+      <div
+        aria-label="Previous group"
+        onClick={onDecrement}
+        className={getStyle(styles, "btnPrev")}
+      >
         Prev
       </div>
-      <div onClick={onIncrement} className={getStyle(styles, "btnNext")}>
+      <div
+        aria-label="Next group"
+        onClick={onIncrement}
+        className={getStyle(styles, "btnNext")}
+      >
         Next
       </div>
     </div>
