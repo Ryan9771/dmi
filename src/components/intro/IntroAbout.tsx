@@ -4,7 +4,11 @@ import homeImg from "/homeImage.webp";
 function IntroAbout() {
   return (
     <div className={getStyle(style, "ctn")}>
-      <img alt="" src={homeImg} className={getStyle(style, "img")} />
+      <img
+        alt="Centre for global finance & tech"
+        src={homeImg}
+        className={getStyle(style, "img")}
+      />
       <div className={getStyle(style, "textBox")}>
         <p>
           Citi, in partnership with Imperial College Business School’s Centre
