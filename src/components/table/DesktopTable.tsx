@@ -40,6 +40,10 @@ function DesktopTable({
       let group = 10 * (groupDesktop - 1) + 1;
       let rank = group;
       for (let i = rank; i < group + 10; i++) {
+        if (i > 13) {
+          break;
+        }
+
         const row = [];
         const cols: string[] = table[i];
 

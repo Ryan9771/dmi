@@ -57,10 +57,12 @@ function TableGroup() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/src/assets/data/dmi_2023_clusters.csv");
+        const response = await fetch("/src/assets/data/final_dmi.csv");
         const csvString = await response.text();
         const newnewDmi = csvToArray(csvString);
+        console.log(newnewDmi);
         newnewDmi.sort(function (a, b) {
+          // Change to new index for 'index'
           return parseFloat(b[5]) - parseFloat(a[5]);
         });
         setDmiCsv(newnewDmi);
