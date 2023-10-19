@@ -40,62 +40,69 @@ function DesktopTable({
       let group = 10 * (groupDesktop - 1) + 1;
       let rank = group;
       for (let i = rank; i < group + 10; i++) {
+        /* Add blank rows to maintain height of the table */
         if (i > 13) {
-          break;
-        }
+          for (let j = 0; j < 8; j++) {
+            rows.push(<td className="h-[53px]"></td>);
+          }
+        } else {
+          const row = [];
+          const cols: string[] = table[i];
 
-        const row = [];
-        const cols: string[] = table[i];
+          row.push(
+            <td key={rank} id={`${i}-0`} className="row-header">
+              {rank}
+            </td>
+          );
 
-        row.push(
-          <td key={rank} id={`${i}-0`} className="row-header">
-            {rank}
-          </td>
-        );
+          for (let j = 0; j < cols.length - 2; j++) {
+            let content = cols[j].trim();
+            let key = j + Math.random();
+            if (j >= 1 && j <= 4) {
+              row.push(
+                <DesktopCell
+                  content={formatNumber(content)}
+                  id={`${i}-${j}`}
+                  handleBlur={handleBlur}
+                  key={`${i}-${j}`}
+                />
+              );
+            } else if (j === 5) {
+              content = formatNumber(content);
+              row.push(
+                <td key={key} id={`${i}-${j}`} className="rows">
+                  {content}
+                </td>
+              );
+            } else {
+              row.push(
+                <td key={key} id={`${i}-${j}`} className="rows">
+                  {content}
+                </td>
+              );
+            }
+          }
 
-        for (let j = 0; j < cols.length - 2; j++) {
-          let content = cols[j].trim();
-          let key = j + Math.random();
-          if (j >= 1 && j <= 4) {
+          /* Handles Cluster mode column */
+          if (clusterMode) {
             row.push(
-              <DesktopCell
-                content={formatNumber(content)}
-                id={`${i}-${j}`}
-                handleBlur={handleBlur}
-                key={`${i}-${j}`}
-              />
-            );
-          } else if (j === 5) {
-            content = formatNumber(content);
-            row.push(
-              <td key={key} id={`${i}-${j}`} className="rows">
-                {content}
-              </td>
-            );
-          } else {
-            row.push(
-              <td key={key} id={`${i}-${j}`} className="rows">
-                {content}
+              <td
+                key={Math.random()}
+                id={`${i}-6`}
+                className="rows text-center"
+              >
+                {cols[6]}
               </td>
             );
           }
-        }
 
-        /* Handles Cluster mode column */
-        if (clusterMode) {
-          row.push(
-            <td key={Math.random()} id={`${i}-6`} className="rows text-center">
-              {cols[6]}
-            </td>
+          rank += 1;
+          rows.push(
+            <tr key={i + Math.random()} id={`${i}-6`} className="row-line">
+              {row}
+            </tr>
           );
         }
-
-        rank += 1;
-        rows.push(
-          <tr key={i + Math.random()} id={`${i}-6`} className="row-line">
-            {row}
-          </tr>
-        );
       }
       setRenderedRows(rows);
     }
