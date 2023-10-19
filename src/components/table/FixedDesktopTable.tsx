@@ -30,7 +30,7 @@ function FixedDesktopTable({ table, tableEditor }: Props) {
     if (table && table.length > 0) {
       let rank = 1;
 
-      for (let i = 0; i < table.length; i++) {
+      for (let i = 1; i < table.length; i++) {
         const row_builder = [];
         const cols: string[] = table[i];
 
