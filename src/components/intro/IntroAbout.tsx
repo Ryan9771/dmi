@@ -42,7 +42,7 @@ const style = {
     "md:gap-16",
     "lg:mt-4",
     "lg:mt-16",
-    "lg:gap-18",
+    "lg:gap-24",
     "lg:flex-row",
     "lg:justify-center",
   ],

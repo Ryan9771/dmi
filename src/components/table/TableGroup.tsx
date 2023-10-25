@@ -1,4 +1,14 @@
+import FilterButtons from "../buttons/FilterButtons";
+import GroupButtons from "../buttons/GroupButtons";
+// import DesktopTable from "../table/DesktopTable";
 import FixedDesktopTable from "./FixedDesktopTable";
+import MobileTable from "./MobileTable";
+// import { storage } from "../../services/firebase.config";
+// import { ref, getDownloadURL } from "firebase/storage";
+import {
+  NestedDict,
+  correlationsToArray,
+} from "../../util/correlations_conversion";
 import { csvToArray } from "../../util/csv_conversion";
 import { formatNumber } from "../../util/utils";
 import { useState, useEffect } from "react";
@@ -6,6 +16,14 @@ import { useState, useEffect } from "react";
 function TableGroup() {
   /* Dataset */
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
+  // const [correlationCsv, setCorrelationCsv] = useState<NestedDict>({});
+
+  /* Table logic variables */
+  // const [groupDesktop, setGroupDesktop] = useState<number>(1);
+  // const [groupMobile, setGroupMobile] = useState<number>(1);
+  // const [clusterMode, setClusterMode] = useState<boolean>(false);
+  // const [correlationMode, setCorrelationMode] = useState<boolean>(false);
+
   // const ACTIVE_URL = ref(storage, "active/dmi_2023_clusters.csv");
 
   /* Parses the data from firebase storage */
@@ -72,14 +90,13 @@ function TableGroup() {
       parseFloat(newDmi[row][1]) +
       parseFloat(newDmi[row][2]) +
       parseFloat(newDmi[row][3]) +
-      parseFloat(newDmi[row][4]) +
-      parseFloat(newDmi[row][5]);
+      parseFloat(newDmi[row][4]);
 
-    let average = sum / 5;
-    newDmi[row][6] = formatNumber(average.toString());
+    let average = sum / 4;
+    newDmi[row][5] = formatNumber(average.toString());
 
     newDmi.sort(function (a, b) {
-      return parseFloat(b[6]) - parseFloat(a[6]);
+      return parseFloat(b[5]) - parseFloat(a[5]);
     });
 
     setDmiCsv(newDmi);
@@ -88,6 +105,13 @@ function TableGroup() {
   return (
     <div id="table" className="w-full flex flex-col items-center">
       <FixedDesktopTable table={dmiCsv} tableEditor={editTable} />
+      {/* <MobileTable
+        table={dmiCsv}
+        groupMobile={groupMobile}
+        clusterMode={clusterMode}
+        correlationMode={correlationMode}
+        tableEditor={editTable}
+      /> */}
     </div>
   );
 }

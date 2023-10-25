@@ -44,71 +44,76 @@ function MobileTable({
 
     if (table && table.length > 0) {
       for (let i = rank; i < group + 5; i++) {
-        let innerRows: JSX.Element[] = [];
-        const iterCols = table[i];
 
-        /* Pushes the rank into the table */
-        innerRows.push(
-          <tr key={rank}>
-            <th className="headers-mobile-rank">RANK</th>
-            <th className="row-header-mobile">{rank}</th>
-          </tr>
-        );
-
-        rank++;
-
-        for (let j = 0; j < iterCols.length - 2; j++) {
-          let contentRow: JSX.Element;
-          if (j >= 1 && j <= 4) {
-            contentRow = (
-              <MobileCell
-                content={formatNumber(iterCols[j])}
-                id={`${i}-${j}`}
-                handleBlur={handleBlur}
-                key={`${i}-${j}`}
-              />
-            );
-          } else if (j === 5) {
-            contentRow = (
-              <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
-            );
-          } else {
-            contentRow = <td className="rows-mobile">{iterCols[j]}</td>;
-          }
-
-          /* We now push the row to the list of rows */
-          innerRows.push(
-            <tr key={Math.random()}>
-              <td className="headers-mobile">{HEADER_LIST[j]}</td>
-              {contentRow}
-            </tr>
-          );
-        }
-
-        /* We check if the table is in clustermode */
-        if (clusterMode) {
-          innerRows.push(
-            <tr>
-              <td className="headers-mobile">CLUSTERS</td>
-              <td className="rows-mobile text-center">{iterCols[6]}</td>
-            </tr>
-          );
-        }
-
-        /* We now push the table to the list of tables */
-        if (firstTable) {
-          tableList.push(
-            <table className={getStyle(style, "tableFirst")}>
-              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
-            </table>
-          );
-          firstTable = false;
+        if (i >= table.length) {
+          break;
         } else {
-          tableList.push(
-            <table className={getStyle(style, "table")}>
-              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
-            </table>
+          let innerRows: JSX.Element[] = [];
+          const iterCols = table[i];
+  
+          /* Pushes the rank into the table */
+          innerRows.push(
+            <tr key={rank}>
+              <th className="headers-mobile-rank">RANK</th>
+              <th className="row-header-mobile">{rank}</th>
+            </tr>
           );
+  
+          rank++;
+  
+          for (let j = 0; j < iterCols.length - 2; j++) {
+            let contentRow: JSX.Element;
+            if (j >= 1 && j <= 4) {
+              contentRow = (
+                <MobileCell
+                  content={formatNumber(iterCols[j])}
+                  id={`${i}-${j}`}
+                  handleBlur={handleBlur}
+                  key={`${i}-${j}`}
+                />
+              );
+            } else if (j === 5) {
+              contentRow = (
+                <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
+              );
+            } else {
+              contentRow = <td className="rows-mobile">{iterCols[j]}</td>;
+            }
+  
+            /* We now push the row to the list of rows */
+            innerRows.push(
+              <tr key={Math.random()}>
+                <td className="headers-mobile">{HEADER_LIST[j]}</td>
+                {contentRow}
+              </tr>
+            );
+          }
+  
+          /* We check if the table is in clustermode */
+          if (clusterMode) {
+            innerRows.push(
+              <tr>
+                <td className="headers-mobile">CLUSTERS</td>
+                <td className="rows-mobile text-center">{iterCols[6]}</td>
+              </tr>
+            );
+          }
+  
+          /* We now push the table to the list of tables */
+          if (firstTable) {
+            tableList.push(
+              <table className={getStyle(style, "tableFirst")}>
+                <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+              </table>
+            );
+            firstTable = false;
+          } else {
+            tableList.push(
+              <table className={getStyle(style, "table")}>
+                <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+              </table>
+            );
+          }
         }
       }
     }
