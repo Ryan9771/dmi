@@ -5,10 +5,20 @@ function Navbar() {
   return (
     <div className={getStyle(style, "ctn")}>
       <div className={getStyle(style, "logoCtn")}>
-        <h1 className={getStyle(style, "logoIcon")}>B</h1>
+        {/* <h1 className={getStyle(style, "logoIcon")}>B</h1>
         <h1 className={getStyle(style, "logoText")}>
           Imperial College Business School
-        </h1>
+        </h1> */}
+        <img
+          className="hidden sm:flex sm:h-11 md:h-12"
+          src="/icl-logo-big.svg"
+          alt="Imperial Business School logo"
+        />
+        <img
+          className="flex sm:hidden w-6"
+          src="/icl-navbar-logo.png"
+          alt="Imperial Business School Logo"
+        />
       </div>
       <div className={getStyle(style, "subNavbar")}>
         <HashLink
