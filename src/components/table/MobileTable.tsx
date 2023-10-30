@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { formatNumber } from "../../util/utils";
 import MobileCell from "./MobileCell";
 
-const HEADER_LIST = ["COUNTRY", "P1", "P2", "P3", "P4", "INDEX"];
+const HEADER_LIST = ["COUNTRY", "P1", "P2", "P3", "P4", "P5", "INDEX"];
 
 interface MobileTableProps {
   table: string[][];
@@ -53,9 +53,9 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
 
         rank++;
 
-        for (let j = 0; j < iterCols.length - 2; j++) {
+        for (let j = 0; j < iterCols.length; j++) {
           let contentRow: JSX.Element;
-          if (j >= 1 && j <= 4) {
+          if (j >= 1 && j <= 6) {
             contentRow = (
               <MobileCell
                 content={formatNumber(iterCols[j])}
@@ -64,7 +64,7 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
                 key={`${i}-${j}`}
               />
             );
-          } else if (j === 5) {
+          } else if (j === 6) {
             contentRow = (
               <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
             );

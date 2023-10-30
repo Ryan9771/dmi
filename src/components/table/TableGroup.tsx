@@ -85,13 +85,14 @@ function TableGroup() {
       parseFloat(newDmi[row][1]) +
       parseFloat(newDmi[row][2]) +
       parseFloat(newDmi[row][3]) +
-      parseFloat(newDmi[row][4]);
+      parseFloat(newDmi[row][4]) +
+      parseFloat(newDmi[row][5]);
 
-    let average = sum / 4;
-    newDmi[row][5] = formatNumber(average.toString());
+    let average = sum / 5;
+    newDmi[row][6] = formatNumber(average.toString());
 
     newDmi.sort(function (a, b) {
-      return parseFloat(b[5]) - parseFloat(a[5]);
+      return parseFloat(b[6]) - parseFloat(a[6]);
     });
 
     setDmiCsv(newDmi);
@@ -106,7 +107,7 @@ function TableGroup() {
   };
 
   const decrementGroupMobile = () => {
-    if (groupMobile > 0) {
+    if (groupMobile > 1) {
       setGroupMobile(groupMobile - 1);
     }
   };
