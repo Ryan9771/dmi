@@ -9,17 +9,9 @@ interface MobileTableProps {
   table: string[][];
   groupMobile: number;
   tableEditor: (i: string, j: string, val: string) => void;
-  clusterMode: boolean;
-  correlationMode: boolean;
 }
 
-function MobileTable({
-  table,
-  groupMobile,
-  tableEditor,
-  clusterMode,
-  correlationMode,
-}: MobileTableProps) {
+function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
@@ -43,77 +35,66 @@ function MobileTable({
     const tableList: JSX.Element[] = [];
 
     if (table && table.length > 0) {
-      for (let i = rank; i < group + 5; i++) {
+      console.log("============= GROUP NUMBER =============");
+      console.log("Group:" + group);
+      console.log(Math.min(group + 5, 14));
+      console.log("============= GROUP NUMBER =============");
+      for (let i = rank; i < Math.min(group + 5, 13); i++) {
+        let innerRows: JSX.Element[] = [];
+        const iterCols = table[i];
 
-        if (i >= table.length) {
-          break;
-        } else {
-          let innerRows: JSX.Element[] = [];
-          const iterCols = table[i];
-  
-          /* Pushes the rank into the table */
+        /* Pushes the rank into the table */
+        innerRows.push(
+          <tr key={rank}>
+            <th className="headers-mobile-rank">RANK</th>
+            <th className="row-header-mobile">{rank}</th>
+          </tr>
+        );
+
+        rank++;
+
+        for (let j = 0; j < iterCols.length - 2; j++) {
+          let contentRow: JSX.Element;
+          if (j >= 1 && j <= 4) {
+            contentRow = (
+              <MobileCell
+                content={formatNumber(iterCols[j])}
+                id={`${i}-${j}`}
+                handleBlur={handleBlur}
+                key={`${i}-${j}`}
+              />
+            );
+          } else if (j === 5) {
+            contentRow = (
+              <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
+            );
+          } else {
+            contentRow = <td className="rows-mobile">{iterCols[j]}</td>;
+          }
+
+          /* We now push the row to the list of rows */
           innerRows.push(
-            <tr key={rank}>
-              <th className="headers-mobile-rank">RANK</th>
-              <th className="row-header-mobile">{rank}</th>
+            <tr key={Math.random()}>
+              <td className="headers-mobile">{HEADER_LIST[j]}</td>
+              {contentRow}
             </tr>
           );
-  
-          rank++;
-  
-          for (let j = 0; j < iterCols.length - 2; j++) {
-            let contentRow: JSX.Element;
-            if (j >= 1 && j <= 4) {
-              contentRow = (
-                <MobileCell
-                  content={formatNumber(iterCols[j])}
-                  id={`${i}-${j}`}
-                  handleBlur={handleBlur}
-                  key={`${i}-${j}`}
-                />
-              );
-            } else if (j === 5) {
-              contentRow = (
-                <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
-              );
-            } else {
-              contentRow = <td className="rows-mobile">{iterCols[j]}</td>;
-            }
-  
-            /* We now push the row to the list of rows */
-            innerRows.push(
-              <tr key={Math.random()}>
-                <td className="headers-mobile">{HEADER_LIST[j]}</td>
-                {contentRow}
-              </tr>
-            );
-          }
-  
-          /* We check if the table is in clustermode */
-          if (clusterMode) {
-            innerRows.push(
-              <tr>
-                <td className="headers-mobile">CLUSTERS</td>
-                <td className="rows-mobile text-center">{iterCols[6]}</td>
-              </tr>
-            );
-          }
-  
-          /* We now push the table to the list of tables */
-          if (firstTable) {
-            tableList.push(
-              <table className={getStyle(style, "tableFirst")}>
-                <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
-              </table>
-            );
-            firstTable = false;
-          } else {
-            tableList.push(
-              <table className={getStyle(style, "table")}>
-                <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
-              </table>
-            );
-          }
+        }
+
+        /* We now push the table to the list of tables */
+        if (firstTable) {
+          tableList.push(
+            <table className={getStyle(style, "tableFirst")}>
+              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+            </table>
+          );
+          firstTable = false;
+        } else {
+          tableList.push(
+            <table className={getStyle(style, "table")}>
+              <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
+            </table>
+          );
         }
       }
     }
@@ -124,7 +105,7 @@ function MobileTable({
   /* Reloads the table when the dependencies are changed */
   useEffect(() => {
     renderRows();
-  }, [table, groupMobile, clusterMode, correlationMode]);
+  }, [table, groupMobile]);
 
   return <div className={getStyle(style, "ctn")}>{renderedTables}</div>;
 }

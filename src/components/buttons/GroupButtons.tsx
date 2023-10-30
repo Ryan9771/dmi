@@ -1,25 +1,16 @@
 import getStyle from "../../Styles";
 
 interface Props {
-  incrementDesktop: () => void;
-  decrementDesktop: () => void;
   incrementMobile: () => void;
   decrementMobile: () => void;
 }
 
-function GroupButtons({
-  incrementDesktop,
-  decrementDesktop,
-  incrementMobile,
-  decrementMobile,
-}: Props) {
+function GroupButtons({ incrementMobile, decrementMobile }: Props) {
   const onIncrement = () => {
-    incrementDesktop();
     incrementMobile();
   };
 
   const onDecrement = () => {
-    decrementDesktop();
     decrementMobile();
   };
 
@@ -44,7 +35,7 @@ function GroupButtons({
 }
 
 const styles = {
-  ctn: ["flex", "justify-between", "items-center", "mt-10", "p-3"],
+  ctn: ["md:hidden", "flex", "justify-between", "items-center", "mt-10", "p-3"],
   btnPrev: [
     "rounded-full",
     "p-2",

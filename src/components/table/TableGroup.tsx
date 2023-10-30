@@ -1,14 +1,9 @@
-import FilterButtons from "../buttons/FilterButtons";
 import GroupButtons from "../buttons/GroupButtons";
 // import DesktopTable from "../table/DesktopTable";
 import FixedDesktopTable from "./FixedDesktopTable";
 import MobileTable from "./MobileTable";
 // import { storage } from "../../services/firebase.config";
 // import { ref, getDownloadURL } from "firebase/storage";
-import {
-  NestedDict,
-  correlationsToArray,
-} from "../../util/correlations_conversion";
 import { csvToArray } from "../../util/csv_conversion";
 import { formatNumber } from "../../util/utils";
 import { useState, useEffect } from "react";
@@ -102,16 +97,33 @@ function TableGroup() {
     setDmiCsv(newDmi);
   };
 
+  const [groupMobile, setGroupMobile] = useState<number>(1);
+
+  const incrementGroupMobile = () => {
+    if (groupMobile < 3) {
+      setGroupMobile(groupMobile + 1);
+    }
+  };
+
+  const decrementGroupMobile = () => {
+    if (groupMobile > 0) {
+      setGroupMobile(groupMobile - 1);
+    }
+  };
+
   return (
     <div id="table" className="w-full flex flex-col items-center">
       <FixedDesktopTable table={dmiCsv} tableEditor={editTable} />
-      {/* <MobileTable
+      <MobileTable
         table={dmiCsv}
         groupMobile={groupMobile}
-        clusterMode={clusterMode}
-        correlationMode={correlationMode}
         tableEditor={editTable}
-      /> */}
+      />
+
+      <GroupButtons
+        incrementMobile={incrementGroupMobile}
+        decrementMobile={decrementGroupMobile}
+      />
     </div>
   );
 }
