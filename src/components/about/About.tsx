@@ -53,7 +53,6 @@ const style = {
     "text-header-blue",
     "text-center",
     "sm:text-2xl",
-    "md:text-3xl",
   ],
 };
 

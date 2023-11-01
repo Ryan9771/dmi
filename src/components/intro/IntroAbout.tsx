@@ -57,7 +57,7 @@ const style = {
     "trans",
     "leading-6",
     "max-w-xl",
-    "sm:text-lg",
+    "sm:text-base",
     "sm:px-6",
     "md:w-4/6",
     "lg:leading-7",

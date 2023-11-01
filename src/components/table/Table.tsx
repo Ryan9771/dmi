@@ -11,14 +11,13 @@ function Table() {
 }
 
 const style = {
-  ctn: ["flex", "flex-col", "w-full", "gap-8", "items-center", "md:gap-10"],
+  ctn: ["flex", "flex-col", "w-full", "gap-5", "items-center"],
   header: [
     "text-xl",
     "font-medium",
     "text-header-blue",
     "text-center",
     "sm:text-2xl",
-    "md:text-3xl",
   ],
 };
 
