@@ -1,9 +1,10 @@
+import { HashLink } from "react-router-hash-link";
 import getStyle from "../../Styles";
 
 function Footer() {
   return (
     <div className={getStyle(styles, "ctn")}>
-      <a href="#">Accessibilty</a>
+      <HashLink to="/accessibility">Accessibilty</HashLink>
     </div>
   );
 }

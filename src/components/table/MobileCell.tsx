@@ -1,4 +1,4 @@
-import { allDigits } from "../../util/utils";
+// import { allDigits } from "../../util/utils";
 
 interface Props {
   content: string;
@@ -6,29 +6,23 @@ interface Props {
   handleBlur: (event: React.FocusEvent<HTMLTableCellElement>) => void;
 }
 
-/* Restricts the user to enter characters, and blurs upon esc or enter */
+/* Restricts user to not type alphabets */
+/* TODO: Fix entering multiple decimal & length bug */
 const keyPressHandler = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
-  const target = event.target as HTMLTableCellElement;
+  const isDigitOrDecimal = (key: string) => key === "." || !isNaN(Number(key));
+  const allowedKeys = [
+    "Backspace",
+    "Tab",
+    "ArrowLeft",
+    "ArrowRight",
+    "Escape",
+    "Enter",
+  ];
 
-  switch (event.key) {
-    case "Backspace":
-      break;
-
-    case "Enter":
-      event.preventDefault();
-      target.blur();
-      break;
-
-    case "Escape":
-      event.preventDefault();
-      target.blur();
-      break;
-
-    default:
-      if (!allDigits(event.key)) {
-        event.preventDefault();
-      }
-      break;
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") {
+    // Allow Ctrl + A or Cmd + A
+  } else if (!isDigitOrDecimal(event.key) && !allowedKeys.includes(event.key)) {
+    event.preventDefault();
   }
 };
 

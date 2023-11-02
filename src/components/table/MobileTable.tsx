@@ -15,6 +15,7 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
+  /* TODO: Bug in tabbing through mobile table */
   const handleBlur = (event: React.FocusEvent<HTMLTableCellElement>) => {
     const text = event.target.innerText.trim();
     const id: string | undefined =
@@ -46,8 +47,12 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
         /* Pushes the rank into the table */
         innerRows.push(
           <tr key={rank}>
-            <th className="headers-mobile-rank">RANK</th>
-            <th className="row-header-mobile">{rank}</th>
+            <th tabIndex={0} className="headers-mobile-rank">
+              RANK
+            </th>
+            <th tabIndex={0} className="row-header-mobile">
+              {rank}
+            </th>
           </tr>
         );
 
@@ -66,16 +71,24 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
             );
           } else if (j === 6) {
             contentRow = (
-              <td className="rows-mobile">{formatNumber(iterCols[j])}</td>
+              <td tabIndex={0} className="rows-mobile">
+                {formatNumber(iterCols[j])}
+              </td>
             );
           } else {
-            contentRow = <td className="rows-mobile">{iterCols[j]}</td>;
+            contentRow = (
+              <td tabIndex={0} className="rows-mobile">
+                {iterCols[j]}
+              </td>
+            );
           }
 
           /* We now push the row to the list of rows */
           innerRows.push(
             <tr key={Math.random()}>
-              <td className="headers-mobile">{HEADER_LIST[j]}</td>
+              <td tabIndex={0} className="headers-mobile">
+                {HEADER_LIST[j]}
+              </td>
               {contentRow}
             </tr>
           );

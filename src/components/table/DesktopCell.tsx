@@ -1,5 +1,3 @@
-import { allDigits } from "../../util/utils";
-
 interface Props {
   content: string;
   id: string;
