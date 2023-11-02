@@ -24,7 +24,7 @@ const style = {
     "flex-col",
     "gap-5",
     "sm:p-5",
-    "md:mt-32",
+    "md:mt-24",
     "md:gap-7",
     "lg:gap-10",
   ],
