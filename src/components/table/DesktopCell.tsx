@@ -6,31 +6,49 @@ interface Props {
   handleBlur: (event: React.FocusEvent<HTMLTableCellElement>) => void;
 }
 
-/* Restricts the user to enter characters, and blurs upon esc or enter */
+const isDigitOrDecimal = (key: string) => key === "." || !isNaN(Number(key));
+const allowedKeys = [
+  "Backspace",
+  "Tab",
+  "ArrowLeft",
+  "ArrowRight",
+  "Escape",
+  "Enter",
+];
+
 const keyPressHandler = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
-  const target = event.target as HTMLTableCellElement;
-
-  switch (event.key) {
-    case "Backspace":
-      break;
-
-    case "Enter":
-      event.preventDefault();
-      target.blur();
-      break;
-
-    case "Escape":
-      event.preventDefault();
-      target.blur();
-      break;
-
-    default:
-      if (!allDigits(event.key)) {
-        event.preventDefault();
-      }
-      break;
+  if (!isDigitOrDecimal(event.key) && !allowedKeys.includes(event.key)) {
+    event.preventDefault();
   }
 };
+
+/* Restricts the user to enter characters, and blurs upon esc or enter */
+// const keyPressHandler = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
+//   const target = event.target as HTMLTableCellElement;
+
+//   x;
+
+//   switch (event.key) {
+//     case "Backspace":
+//       break;
+
+//     case "Enter":
+//       event.preventDefault();
+//       target.blur();
+//       break;
+
+//     case "Escape":
+//       event.preventDefault();
+//       target.blur();
+//       break;
+
+//     default:
+//       if (!allDigits(event.key)) {
+//         event.preventDefault();
+//       }
+//       break;
+//   }
+// };
 
 function DesktopCell({ content, id, handleBlur }: Props) {
   return (
