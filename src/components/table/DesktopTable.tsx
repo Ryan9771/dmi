@@ -118,14 +118,32 @@ function DesktopTable({
       <table id="csv-table" className={getStyle(styles, "table")}>
         <thead className={getStyle(styles, "thead")}>
           <tr id="table-header">
-            <th className={getStyle(styles, "firstTh")}>Rank 2023</th>
-            <th className={getStyle(styles, "th")}>Country</th>
-            <th className={getStyle(styles, "th")}>P1</th>
-            <th className={getStyle(styles, "th")}>P2</th>
-            <th className={getStyle(styles, "th")}>P3</th>
-            <th className={getStyle(styles, "th")}>P4</th>
-            <th className={getStyle(styles, "th")}>Index</th>
-            {clusterMode && <th className="headers text-center">Clusters</th>}
+            <th tabIndex={0} className={getStyle(styles, "firstTh")}>
+              Rank 2023
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              Country
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P1
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P2
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P3
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P4
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              Index
+            </th>
+            {clusterMode && (
+              <th tabIndex={0} className="headers text-center">
+                Clusters
+              </th>
+            )}
           </tr>
         </thead>
 

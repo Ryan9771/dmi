@@ -35,7 +35,7 @@ function FixedDesktopTable({ table, tableEditor }: Props) {
         const cols: string[] = table[i];
 
         row_builder.push(
-          <td key={rank} id={`${i}-0`} className="row-header">
+          <td tabIndex={0} key={rank} id={`${i}-0`} className="row-header">
             {rank}
           </td>
         );
@@ -58,14 +58,14 @@ function FixedDesktopTable({ table, tableEditor }: Props) {
             /* The uneditable index value */
             content = formatNumber(content);
             row_builder.push(
-              <td key={id} id={id} className="rows">
+              <td tabIndex={0} key={id} id={id} className="rows">
                 {content}
               </td>
             );
           } else {
             /* The country cell */
             row_builder.push(
-              <td key={id} id={id} className="rows">
+              <td tabIndex={0} key={id} id={id} className="rows">
                 {content}
               </td>
             );
@@ -94,14 +94,30 @@ function FixedDesktopTable({ table, tableEditor }: Props) {
       <table id="csv-table" className={getStyle(styles, "table")}>
         <thead className={getStyle(styles, "thead")}>
           <tr id="table-header">
-            <th className={getStyle(styles, "firstTh")}>Rank 2023</th>
-            <th className={getStyle(styles, "th")}>Country</th>
-            <th className={getStyle(styles, "th")}>P1</th>
-            <th className={getStyle(styles, "th")}>P2</th>
-            <th className={getStyle(styles, "th")}>P3</th>
-            <th className={getStyle(styles, "th")}>P4</th>
-            <th className={getStyle(styles, "th")}>P5</th>
-            <th className={getStyle(styles, "th")}>Index</th>
+            <th tabIndex={0} className={getStyle(styles, "firstTh")}>
+              Rank 2023
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              Country
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P1
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P2
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P3
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P4
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              P5
+            </th>
+            <th tabIndex={0} className={getStyle(styles, "th")}>
+              Index
+            </th>
           </tr>
         </thead>
 
