@@ -8,7 +8,7 @@ function Para({ paragraphs }: Props) {
   return (
     <div className={getStyle(style, "ctn")}>
       {paragraphs.map((paragraph, index) => (
-        <p className={getStyle(style, "text")} key={index}>
+        <p tabIndex={0} className={getStyle(style, "text")} key={index}>
           {paragraph}
         </p>
       ))}

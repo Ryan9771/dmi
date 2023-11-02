@@ -10,14 +10,14 @@ function IntroAbout() {
         className={getStyle(style, "img")}
       />
       <div className={getStyle(style, "textBox")}>
-        <p>
+        <p tabIndex={0}>
           Citi, in partnership with Imperial College Business School’s Centre
           for Financial Technology, has launched its latest Digital Money Index.
           The index, now in its eighth year, tracks 113 countries (up from 84 in
           previous years) in terms of their development of digital money
           readiness.
         </p>
-        <p>
+        <p tabIndex={0}>
           The index continues to classify countries into four clusters –
           Incipient, Emerging, In-transition and Materially Ready - according to
           their levels of digital readiness. This year’s revamped index includes

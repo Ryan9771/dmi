@@ -39,7 +39,9 @@ const ABOUT_PARAGRAPHS = [
 function About() {
   return (
     <main id="main-content" className={getStyle(style, "ctn")}>
-      <div className={getStyle(style, "header")}>About our Project</div>
+      <div tabIndex={0} className={getStyle(style, "header")}>
+        About our Project
+      </div>
       <Para paragraphs={ABOUT_PARAGRAPHS} />
     </main>
   );

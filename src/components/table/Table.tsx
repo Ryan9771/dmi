@@ -4,7 +4,9 @@ import TableGroup from "./TableGroup";
 function Table() {
   return (
     <div className={getStyle(style, "ctn")}>
-      <p className={getStyle(style, "header")}>Interact with our Data</p>
+      <p tabIndex={0} className={getStyle(style, "header")}>
+        Interact with our Data
+      </p>
       <TableGroup />
     </div>
   );
