@@ -97,14 +97,14 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
         /* We now push the table to the list of tables */
         if (firstTable) {
           tableList.push(
-            <table className={getStyle(style, "tableFirst")}>
+            <table tabIndex={0} className={getStyle(style, "tableFirst")}>
               <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
             </table>
           );
           firstTable = false;
         } else {
           tableList.push(
-            <table className={getStyle(style, "table")}>
+            <table tabIndex={0} className={getStyle(style, "table")}>
               <tbody className={getStyle(style, "tbody")}>{innerRows}</tbody>
             </table>
           );
@@ -135,7 +135,7 @@ const style = {
     "rounded-xl",
     "shadow-md",
     "justify-center",
-    "sm:hidden",
+    "md:hidden",
   ],
   tableFirst: ["w-full", "h-full", "text-left"],
   table: ["w-full", "h-full", "text-left", "border-t-2", "border-black"],
