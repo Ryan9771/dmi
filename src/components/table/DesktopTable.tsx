@@ -163,6 +163,7 @@ const styles = {
     "shadow-lg",
     "shadow-md",
     "justify-center",
+    "md:flex",
     "md:max-w-7xl",
     "lg:max-w-5xl",
   ],
