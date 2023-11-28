@@ -15,7 +15,7 @@ function Accessibilty() {
         such as accordions, slideshow/carousels, tables, and tab and links.
         AbilityNet has advice on making your device easier to use if you have a
         disability. How accessible https://cftdmi.cc.ic.ac.uk/ Imperial College
-        London is: All accessibility issues have been resolved. What we do about
+        London is: All accessibility issues have been resolved except 1 accessibility bug where it is not possible to tab through the entire mobile table. However, the desktop table is accessible and lets you tab through all cells. What we do about
         known issues Imperial College London works to achieve and maintain WCAG
         2.2 standards, but it is not always possible for all content to be
         accessible. Where content is not accessible, we will state a reason,

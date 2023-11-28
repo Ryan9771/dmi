@@ -4,7 +4,7 @@ import getStyle from "../../Styles";
 function Footer() {
   return (
     <div className={getStyle(styles, "ctn")}>
-      <HashLink to="/accessibility">Accessibilty</HashLink>
+      <HashLink target="_blank" to="/accessibility">Accessibilty</HashLink>
     </div>
   );
 }
