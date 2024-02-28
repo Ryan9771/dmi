@@ -11,7 +11,6 @@ interface MobileTableProps {
   tableEditor: (i: string, j: string, val: string) => void;
 }
 
-/* TODO: Fix bug where 12 rows are dispayed instead of 13 */
 function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
 
@@ -41,6 +40,8 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
       console.log("Group:" + group);
       console.log(Math.min(group + 5, 14));
       console.log("============= GROUP NUMBER =============");
+
+      /* TODO: BUG: Math.min(group+5, 13) causes only 12 / 13 rows to be displayed */
       for (let i = rank; i < Math.min(group + 5, 13); i++) {
         let innerRows: JSX.Element[] = [];
         const iterCols = table[i];
