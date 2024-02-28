@@ -11,6 +11,7 @@ interface MobileTableProps {
   tableEditor: (i: string, j: string, val: string) => void;
 }
 
+/* TODO: Fix bug where 12 rows are dispayed instead of 13 */
 function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
 
