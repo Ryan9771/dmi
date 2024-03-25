@@ -15,7 +15,6 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
 
   /* Defines an onchange function property */
-  /* TODO: Bug in tabbing through mobile table */
   const handleBlur = (event: React.FocusEvent<HTMLTableCellElement>) => {
     const text = event.target.innerText.trim();
     const id: string | undefined =
@@ -28,21 +27,21 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
 
   /* Renders the rows upon load */
   const renderRows = () => {
-    let group = 5 * (groupMobile - 1) + 1;
-    let rank = group;
+    // groupMobile starts from 1 and table data starts from index 1 too, conveniently
+    let groupStartingIndex = 5 * (groupMobile - 1) + 1;
+    let rank = groupStartingIndex;
     let firstTable = true;
 
     /* Array of tables */
     const tableList: JSX.Element[] = [];
 
     if (table && table.length > 0) {
-      console.log("============= GROUP NUMBER =============");
-      console.log("Group:" + group);
-      console.log(Math.min(group + 5, 14));
-      console.log("============= GROUP NUMBER =============");
+      const groupUpperIndex =
+        groupStartingIndex === 11
+          ? groupStartingIndex + 3
+          : groupStartingIndex + 5;
 
-      /* TODO: BUG: Math.min(group+5, 13) causes only 12 / 13 rows to be displayed */
-      for (let i = rank; i < Math.min(group + 5, 13); i++) {
+      for (let i = rank; i < groupUpperIndex; i++) {
         let innerRows: JSX.Element[] = [];
         const iterCols = table[i];
 
