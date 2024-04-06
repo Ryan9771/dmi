@@ -28,11 +28,17 @@ const style = {
     "sm:p-5",
     "md:mt-24",
     "md:gap-7",
-    "lg:gap-10",
+    "lg:gap-16",
   ],
   headingCtn: ["flex", "flex-col", "gap-3", "mdl:flex-row", "mdl:items-center"],
-  headingRed: ["text-imperial-red", "text-2xl", "font-medium"],
-  headingBlue: ["text-header-blue", "text-xl", "font-medium", "sm:text-2xl"],
+  headingRed: ["text-imperial-red", "text-2xl", "font-medium", "md:text-3xl"],
+  headingBlue: [
+    "text-header-blue",
+    "text-xl",
+    "font-medium",
+    "sm:text-2xl",
+    "md:text-3xl",
+  ],
 };
 
 export default Intro;

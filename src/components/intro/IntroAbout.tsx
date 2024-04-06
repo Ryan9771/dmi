@@ -42,6 +42,7 @@ const style = {
     "trans",
     "md:mt-8",
     "md:gap-12",
+    "lg:gap-16",
     "lg:mt-4",
     "lg:mt-16",
     "lg:flex-row",
@@ -71,7 +72,7 @@ const style = {
     "w-80",
     "trans",
     "sm:w-[450px]",
-    "xl:w-[600px]",
+    "xl:w-[500px]",
   ],
 };
 
