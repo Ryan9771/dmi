@@ -1,5 +1,5 @@
 import getStyle from "../../Styles";
-import homeImg from "/homeImage.webp";
+import homeImg from "/latam-group-pic.jpg";
 
 function IntroAbout() {
   return (
@@ -11,18 +11,20 @@ function IntroAbout() {
       />
       <div className={getStyle(style, "textBox")}>
         <p tabIndex={0}>
-          Citi, in partnership with Imperial College Business School’s Centre
-          for Financial Technology, has launched its latest Digital Money Index.
-          The index, now in its eighth year, tracks 113 countries (up from 84 in
-          previous years) in terms of their development of digital money
-          readiness.
+          The launch of the Digital Money Index in the Latin American (LATAM)
+          market is a joint effort led by Citi and the Centre for Financial
+          Technology at Imperial College Business School. This endeavour
+          highlights the essential connection between changing economic
+          environments and the need for financial systems to adapt to the
+          increasing digitalization of the economy and society.
         </p>
         <p tabIndex={0}>
-          The index continues to classify countries into four clusters –
-          Incipient, Emerging, In-transition and Materially Ready - according to
-          their levels of digital readiness. This year’s revamped index includes
-          new indicators and profiles the progress made by several developing
-          economies in driving digital money readiness.
+          The foundation of the Digital Money Index lies in the recognition that
+          as societies and economies transition towards digital platforms, there
+          must be a parallel evolution in financial infrastructure to cater to
+          the needs of this new digital age. This evolution is crucial for
+          maintaining the relevance, efficiency, and support capability of
+          financial systems in a digital economy.
         </p>
       </div>
     </div>
@@ -39,10 +41,9 @@ const style = {
     "items-center",
     "trans",
     "md:mt-8",
-    "md:gap-16",
+    "md:gap-12",
     "lg:mt-4",
     "lg:mt-16",
-    "lg:gap-24",
     "lg:flex-row",
     "lg:justify-center",
   ],
@@ -59,8 +60,7 @@ const style = {
     "max-w-xl",
     "sm:text-base",
     "sm:px-6",
-    "md:w-4/6",
-    "lg:leading-7",
+    "md:w-5/6",
     "lg:max-w-lg",
     "lg:py-5",
     "lg:px-8",
@@ -71,7 +71,7 @@ const style = {
     "w-80",
     "trans",
     "sm:w-[450px]",
-    "xl:w-[500px]",
+    "xl:w-[600px]",
   ],
 };
 

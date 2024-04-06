@@ -31,7 +31,7 @@ const style = {
     "md:max-w-2xl",
     "md:px-8",
     "md:py-6",
-    "md:w-4/6",
+    "md:w-5/6",
     "lg:leading-7",
     "lg:p-7",
     "lg:px-8",
