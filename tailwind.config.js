@@ -32,6 +32,9 @@ export default {
       width: {
         '96': '96%',
       },
+      fontFamily: {
+        'sans': ["Imperial", "sans-serif"],
+      }
     },
   },
   plugins: [],
