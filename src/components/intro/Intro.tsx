@@ -31,13 +31,13 @@ const style = {
     "lg:gap-16",
   ],
   headingCtn: ["flex", "flex-col", "gap-3", "mdl:flex-row", "mdl:items-center"],
-  headingRed: ["text-imperial-red", "text-2xl", "font-medium", "md:text-3xl"],
+  headingRed: ["text-imperial-red", "text-2xl", "font-medium", "lg:text-3xl"],
   headingBlue: [
     "text-header-blue",
     "text-xl",
     "font-medium",
     "sm:text-2xl",
-    "md:text-3xl",
+    "lg:text-3xl",
   ],
 };
 

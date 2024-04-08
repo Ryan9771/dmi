@@ -35,6 +35,9 @@ const style = {
     "lg:leading-7",
     "lg:p-7",
     "lg:px-8",
+    "lg:bg-transparent",
+    "lg:shadow-none",
+    "lg:p-0",
   ],
   text: ["text-base"],
 };
