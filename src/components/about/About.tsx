@@ -1,33 +1,10 @@
 import getStyle from "../../Styles";
-import Para from "./Para";
-
-const ABOUT_PARAGRAPHS = [
-  `
-  The Latin America Digital Money Index aims to track and assess how countries in this region are advancing towards digital financial systems. The assessment is based on five key areas, offering a thorough view of a country's readiness for digital financial integration. These pillars are:`,
-  // `It advises that as a first step, governments must establish a digital vision
-  // that aligns with their larger goals, such as promoting growth, improving
-  // service delivery, and increasing public involvement, among others.`,
-  // `This year, results showed that countries that have augmented a holistic
-  // digital policy with targeted investments have performed particularly well.
-  // This was particularly evident in countries such as Malaysia, the United Arab
-  // Emirates, Estonia, and Uruguay, which have all outperformed their peers.`,
-  // `Ronit Ghose, global head of banking, fintech and digital assets commented:
-  // “It is evident in our latest findings that policymakers that played an active
-  // role, beyond enacting policies, have made considerable progress in driving
-  // digital adoption compared to peers. These entrepreneurial markets have had a
-  // bold vision, enacted favorable policies, and made investments to drive the
-  // vision.”`,
-  // `Deeph Chana, co-Director of the Centre for Financial Technology at Imperial
-  // College Business School commented: “I'm delighted to see the publication of
-  // this year’s Digital Money Index, which is a core element of our multi-year
-  // collaboration with Citi here at the Centre for Financial Technology. This
-  // latest version represents a significant advance in our research and
-  // development since the DMI was last published, with a refactored data ingestion
-  // and processing engine at its heart. The result is a DMI that uses machine
-  // learning methods to provide enhanced accuracy and timeliness, a greater
-  // ability to process new datasets as they emerge and establishes the basis for
-  // further improvements in the years to come."`,
-];
+import Pillar from "./Pillar";
+import pillar1 from "/pillar1.png";
+import pillar2 from "/pillar2.png";
+import pillar3 from "/pillar3.png";
+import pillar4 from "/pillar4.png";
+import pillar5 from "/pillar5.png";
 
 function About() {
   return (
@@ -35,15 +12,44 @@ function About() {
       <div tabIndex={0} className={getStyle(style, "header")}>
         About our Project
       </div>
-      <div className="w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center gap-8">
         <p className="max-w-xl md:max-w-2xl md:w-5/6">
           The Latin America Digital Money Index aims to track and assess how
           countries in this region are advancing towards digital financial
           systems. The assessment is based on five key areas, offering a
           thorough view of a country's readiness for digital financial
-          integration. These pillars are:,
+          integration. These pillars are:
         </p>
-        <ol className={getStyle(style, "paraCtn") + "list-decimal"}>
+
+        <div className="w-full flex flex-wrap gap-5">
+          <Pillar
+            title="Government and Market Support"
+            content="Evaluating the degree to which government policies and market conditions are favourable for digital financial services, including the regulatory environment and incentives for innovation."
+            imageSrc={pillar1}
+          />
+          <Pillar
+            title="Digital Money Solutions"
+            content="Reviewing the presence, accessibility, and innovation in digital financial offerings, such as digital currencies, electronic payment systems, and other digital finance tools."
+            imageSrc={pillar2}
+          />
+          <Pillar
+            title="Financial Market Infrastructure Modernisation"
+            content="Measuring the extent to which existing financial infrastructure is adapting to support digital transactions, including upgrades to banking systems, digital identity verification, and secure digital transaction mechanisms."
+            imageSrc={pillar3}
+          />
+          <Pillar
+            title="Propensity to Adopt"
+            content="Gauging the eagerness and preparedness of individuals and businesses to adopt digital financial services, considering digital literacy, trust in digital systems, and the perceived benefits of digital finance."
+            imageSrc={pillar4}
+          />
+          <Pillar
+            title="Digital Money Solutions"
+            content="Reviewing the presence, accessibility, and innovation in digital financial offerings, such as digital currencies, electronic payment systems, and other digital finance tools."
+            imageSrc={pillar5}
+          />
+        </div>
+
+        {/* <ol className={getStyle(style, "paraCtn") + "list-decimal"}>
           <li>
             <strong>Government and Market Support:</strong> Evaluating the
             degree to which government policies and market conditions are
@@ -93,7 +99,7 @@ function About() {
             transformation of the financial sector for all economic
             participants.
           </p>
-        </ol>
+        </ol> */}
       </div>
     </main>
   );
