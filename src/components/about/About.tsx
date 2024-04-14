@@ -21,7 +21,7 @@ function About() {
           integration. These pillars are:
         </p>
 
-        <div className="w-full flex flex-wrap gap-5">
+        <div className="h-full w-full flex flex-wrap gap-10 justify-center">
           <Pillar
             title="Government and Market Support"
             content="Evaluating the degree to which government policies and market conditions are favourable for digital financial services, including the regulatory environment and incentives for innovation."

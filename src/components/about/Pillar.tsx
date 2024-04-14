@@ -9,9 +9,7 @@ interface Props {
 function Pillar({ title, content, imageSrc }: Props) {
   return (
     <div className={getStyle(styles, "ctn")}>
-      <div className={getStyle(styles, "imgDiv")}>
-        <img src={imageSrc} alt={title} className="w-full" />
-      </div>
+      <img src={imageSrc} alt={title} className="w-32 h-32" />
       <div className={getStyle(styles, "contentDiv")}>
         <div className={getStyle(styles, "titleDiv")}>{title}</div>
         <div className={getStyle(styles, "textCtn")}>{content}</div>
@@ -21,10 +19,9 @@ function Pillar({ title, content, imageSrc }: Props) {
 }
 
 const styles = {
-  ctn: ["flex", "flex-col", "items-center", "rounded-md", "max-w-md"],
-  imgDiv: ["overflow-hidden", "h-2/3", "w-full"],
-  contentDiv: ["flex", "flex-col", "w-full", "h-full", "p-2"],
-  titleDiv: ["bg-white", "w-full", "text-center", "font-bold"],
+  ctn: ["flex", "items-center", "rounded-md", "max-w-sm", "h-24", "overflow-hidden"],
+  contentDiv: ["bg-white", "flex", "flex-col", "w-full", "h-full", "p-2"],
+  titleDiv: ["w-full", "text-center", "font-bold"],
   textCtn: ["bg-white"],
 };
 
