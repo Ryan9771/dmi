@@ -23,26 +23,31 @@ function About() {
 
         <div className="h-full w-full flex flex-wrap gap-10 justify-center">
           <Pillar
+            pillarNum={1}
             title="Government and Market Support"
             content="Evaluating the degree to which government policies and market conditions are favourable for digital financial services, including the regulatory environment and incentives for innovation."
             imageSrc={pillar1}
           />
           <Pillar
+            pillarNum={2}
             title="Digital Money Solutions"
             content="Reviewing the presence, accessibility, and innovation in digital financial offerings, such as digital currencies, electronic payment systems, and other digital finance tools."
             imageSrc={pillar2}
           />
           <Pillar
+            pillarNum={3}
             title="Financial Market Infrastructure Modernisation"
             content="Measuring the extent to which existing financial infrastructure is adapting to support digital transactions, including upgrades to banking systems, digital identity verification, and secure digital transaction mechanisms."
             imageSrc={pillar3}
           />
           <Pillar
+            pillarNum={4}
             title="Propensity to Adopt"
             content="Gauging the eagerness and preparedness of individuals and businesses to adopt digital financial services, considering digital literacy, trust in digital systems, and the perceived benefits of digital finance."
             imageSrc={pillar4}
           />
           <Pillar
+            pillarNum={5}
             title="Digital Money Solutions"
             content="Reviewing the presence, accessibility, and innovation in digital financial offerings, such as digital currencies, electronic payment systems, and other digital finance tools."
             imageSrc={pillar5}

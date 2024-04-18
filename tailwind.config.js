@@ -27,6 +27,11 @@ export default {
         'imperial-red': '#A41A00',
         'subtle-black': "#1E1E1E",
         'header-blue': "#002146",
+        "pillar-1": '#572259',
+        "pillar-2": '#74C2FC',
+        "pillar-3": '#B5DB61',
+        "pillar-4": '#8E319C',
+        "pillar-5": '#636463', 
         
       },
       width: {

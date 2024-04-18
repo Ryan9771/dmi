@@ -1,28 +1,63 @@
 import getStyle from "../../Styles";
 
 interface Props {
+  pillarNum: number;
   title: string;
   content: string;
   imageSrc: string;
 }
 
-function Pillar({ title, content, imageSrc }: Props) {
+function toColour(pillarNum: number) {
+  switch (pillarNum) {
+    case 1:
+      return "bg-pillar-1";
+    case 2:
+      return "bg-pillar-2";
+    case 3:
+      return "bg-pillar-3";
+    case 4:
+      return "bg-pillar-4";
+    case 5:
+      return "bg-pillar-5";
+    default:
+      return "bg-white";
+  }
+}
+
+function Pillar({ pillarNum, title, content, imageSrc }: Props) {
   return (
-    <div className={getStyle(styles, "ctn")}>
-      <img src={imageSrc} alt={title} className="w-32 h-32" />
+    <div className={getStyle(styles, "ctn") + toColour(pillarNum)}>
+      <img className={getStyle(styles, "img")} src={imageSrc} alt={title} />
       <div className={getStyle(styles, "contentDiv")}>
-        <div className={getStyle(styles, "titleDiv")}>{title}</div>
-        <div className={getStyle(styles, "textCtn")}>{content}</div>
+        <p className={getStyle(styles, "title")}>{title}</p>
+        <p>{content}</p>
       </div>
     </div>
   );
 }
 
 const styles = {
-  ctn: ["flex", "items-center", "rounded-md", "max-w-sm", "h-24", "overflow-hidden"],
-  contentDiv: ["bg-white", "flex", "flex-col", "w-full", "h-full", "p-2"],
-  titleDiv: ["w-full", "text-center", "font-bold"],
-  textCtn: ["bg-white"],
+  ctn: [
+    "flex",
+    "flex-col",
+    "items-center",
+    "rounded-sm",
+    "shadow-sm",
+    "w-[400px]",
+  ],
+  img: ["w-80"],
+  contentDiv: [
+    "flex",
+    "flex-col",
+    "gap-4",
+    "bg-white",
+    "p-2",
+    "rounded-sm",
+    "pt-3",
+    "h-full",
+  ],
+  title: ["text-lg"],
+  content: [],
 };
 
 export default Pillar;
