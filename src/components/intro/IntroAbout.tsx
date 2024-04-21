@@ -50,9 +50,9 @@ const style = {
   ],
   textBox: [
     "p-4",
-    "bg-white",
+    // "bg-white",
     "rounded-sm",
-    "shadow-sm",
+    // "shadow-sm",
     "flex",
     "flex-col",
     "gap-4",

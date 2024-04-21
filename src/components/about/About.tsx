@@ -9,11 +9,11 @@ import pillar5 from "/pillar5.png";
 function About() {
   return (
     <main id="main-content" className={getStyle(style, "ctn")}>
-      <div tabIndex={0} className={getStyle(style, "header")}>
+      {/* <div tabIndex={0} className={getStyle(style, "header")}>
         About our Project
-      </div>
-      <div className="w-full flex flex-col items-center gap-8">
-        <p className="max-w-xl md:max-w-2xl md:w-5/6">
+      </div> */}
+      <div className={getStyle(style, "mainSubCtn")}>
+        <p className="max-w-xl md:max-w-2xl text-lg">
           The Latin America Digital Money Index aims to track and assess how
           countries in this region are advancing towards digital financial
           systems. The assessment is based on five key areas, offering a
@@ -21,7 +21,7 @@ function About() {
           integration. These pillars are:
         </p>
 
-        <div className="h-full w-full flex flex-wrap gap-10 justify-center">
+        <div className={getStyle(style, "pillarCtn")}>
           <Pillar
             pillarNum={1}
             title="Government and Market Support"
@@ -53,58 +53,6 @@ function About() {
             imageSrc={pillar5}
           />
         </div>
-
-        {/* <ol className={getStyle(style, "paraCtn") + "list-decimal"}>
-          <li>
-            <strong>Government and Market Support:</strong> Evaluating the
-            degree to which government policies and market conditions are
-            favourable for digital financial services, including the regulatory
-            environment and incentives for innovation.
-          </li>
-          <li>
-            <strong>Digital Money Solutions:</strong> Reviewing the presence,
-            accessibility, and innovation in digital financial offerings, such
-            as digital currencies, electronic payment systems, and other digital
-            finance tools.
-          </li>
-          <li>
-            <strong>Digital Money Solutions:</strong> Reviewing the presence,
-            accessibility, and innovation in digital financial offerings, such
-            as digital currencies, electronic payment systems, and other digital
-            finance tools.
-          </li>
-          <li>
-            <strong>Financial Market Infrastructure Modernisation:</strong>{" "}
-            Measuring the extent to which existing financial infrastructure is
-            adapting to support digital transactions, including upgrades to
-            banking systems, digital identity verification, and secure digital
-            transaction mechanisms.
-          </li>
-          <li>
-            <strong>Propensity to Adopt:</strong> Gauging the eagerness and
-            preparedness of individuals and businesses to adopt digital
-            financial services, considering digital literacy, trust in digital
-            systems, and the perceived benefits of digital finance.
-          </li>
-          <p>
-            The shift towards digital money and digital financial systems is
-            expected to bring widespread advantages to LATAM countries,
-            including economic growth, expansion of the formal sector, enhanced
-            tax collection, and reduced costs in public and private sector
-            disbursements.
-          </p>
-          <p>
-            In summary, the Digital Money Index acts as a crucial resource for
-            stakeholders in the LATAM region to manage the challenges of digital
-            transformation in financial systems. It provides a clear view of
-            progress, identifies areas needing improvement, and suggests avenues
-            for further development, all with the goal of creating inclusive,
-            efficient, and robust digital financial environments. The index
-            offers a structured approach to facilitate the digital
-            transformation of the financial sector for all economic
-            participants.
-          </p>
-        </ol> */}
       </div>
     </main>
   );
@@ -119,6 +67,22 @@ const style = {
     "items-center",
     "md:gap-10",
     "lg:gap-16",
+  ],
+  mainSubCtn: [
+    "w-full",
+    "flex",
+    "flex-col",
+    "items-center",
+    "gap-8",
+    "md:gap-16",
+  ],
+  pillarCtn: [
+    "h-full",
+    "w-full",
+    "flex",
+    "flex-wrap",
+    "gap-10",
+    "justify-center",
   ],
   header: [
     "text-xl",

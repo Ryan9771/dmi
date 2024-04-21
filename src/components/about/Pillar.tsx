@@ -56,7 +56,7 @@ const styles = {
     "pt-3",
     "h-full",
   ],
-  title: ["text-lg"],
+  title: ["text-lg", "font-bold"],
   content: [],
 };
 

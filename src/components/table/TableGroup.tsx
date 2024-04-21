@@ -11,43 +11,6 @@ import { useState, useEffect } from "react";
 function TableGroup() {
   /* Dataset */
   const [dmiCsv, setDmiCsv] = useState<string[][]>([]);
-  // const [correlationCsv, setCorrelationCsv] = useState<NestedDict>({});
-
-  /* Table logic variables */
-  // const [groupDesktop, setGroupDesktop] = useState<number>(1);
-  // const [groupMobile, setGroupMobile] = useState<number>(1);
-  // const [clusterMode, setClusterMode] = useState<boolean>(false);
-  // const [correlationMode, setCorrelationMode] = useState<boolean>(false);
-
-  // const ACTIVE_URL = ref(storage, "active/dmi_2023_clusters.csv");
-
-  /* Parses the data from firebase storage */
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       /* Get URL and csv from active folder in firebase storage */
-  //       const csvURL = await getDownloadURL(ACTIVE_URL);
-  //       const response = await fetch(csvURL);
-  //       const csvString = await response.text();
-  //       const csvArray = csvToArray(csvString);
-
-  //       /* Sorts the csv according to index */
-  //       csvArray.sort(function (a, b) {
-  //         return parseFloat(b[5]) - parseFloat(a[5]);
-  //       });
-  //       setDmiCsv(csvArray);
-
-  //       /* Fetch the correlations csv locally */
-  //       const response2 = await fetch("/src/assets/data/correlations.csv");
-  //       const data = await response2.text();
-  //       setCorrelationCsv(correlationsToArray(data));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   /* Parses the data files on load */
   useEffect(() => {
