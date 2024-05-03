@@ -38,7 +38,7 @@ function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
     if (table && table.length > 0) {
       const groupUpperIndex =
         groupStartingIndex === 11
-          ? groupStartingIndex + 3
+          ? groupStartingIndex + 4
           : groupStartingIndex + 5;
 
       for (let i = rank; i < groupUpperIndex; i++) {

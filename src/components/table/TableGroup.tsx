@@ -1,9 +1,6 @@
 import GroupButtons from "../buttons/GroupButtons";
-// import DesktopTable from "../table/DesktopTable";
 import FixedDesktopTable from "./FixedDesktopTable";
 import MobileTable from "./MobileTable";
-// import { storage } from "../../services/firebase.config";
-// import { ref, getDownloadURL } from "firebase/storage";
 import { csvToArray } from "../../util/csv_conversion";
 import { formatNumber } from "../../util/utils";
 import { useState, useEffect } from "react";
@@ -16,7 +13,7 @@ function TableGroup() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/src/assets/data/final_dmi.csv");
+        const response = await fetch("/src/assets/data/april_dmi.csv");
         const csvString = await response.text();
         const newnewDmi = csvToArray(csvString);
         console.log(newnewDmi);
