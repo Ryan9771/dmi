@@ -13,7 +13,6 @@ interface MobileTableProps {
 
 function MobileTable({ table, groupMobile, tableEditor }: MobileTableProps) {
   const [renderedTables, setRenderedTables] = useState<JSX.Element[]>([]);
-
   /* Defines an onchange function property */
   const handleBlur = (event: React.FocusEvent<HTMLTableCellElement>) => {
     const text = event.target.innerText.trim();

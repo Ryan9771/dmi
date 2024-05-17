@@ -7,7 +7,7 @@ function Table() {
       <p tabIndex={0} className={getStyle(style, "header")}>
         Interact with our Data
       </p>
-      <p>Change a country's pillar value to see how its index responds</p>
+      <p>Change a country's pillar value to see how its index responds.</p>
       <TableGroup />
     </div>
   );
